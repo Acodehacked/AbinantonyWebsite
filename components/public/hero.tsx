@@ -1,5 +1,4 @@
 'use client'
-
 import { useAnimationFrame, useMotionValue, motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import { MouseIcon } from 'lucide-react'
 import Image from 'next/image'
