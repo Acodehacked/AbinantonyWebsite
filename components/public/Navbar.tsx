@@ -13,7 +13,7 @@ const HomeNavbar = () => {
         <StaggerHoverText text='Works' link='#'  />
         <StaggerHoverText text='About-Me' link='#'  />
         <StaggerHoverText text='Contact' link='#'  />
-        <button className='bg-orange-600 px-4 py-2 rounded-full text-white'>Hire Me!</button>
+        <button className='bg-blue-800 px-4 py-2 rounded-full text-white'>Hire Me!</button>
       </div>
     </div>
   )

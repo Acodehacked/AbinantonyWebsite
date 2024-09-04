@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,4 +84,11 @@
 .strok-black{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgba(90, 54, 0, 0.651);
+}
+.title-text{
+  font-family: "Oswald", sans-serif;
+}
+
+.glow-text{
+  text-shadow: 0px 0px 70px #ffffff57;
 }

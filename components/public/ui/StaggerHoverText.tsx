@@ -58,7 +58,7 @@ const StaggerHoverText = ({text,link,active}:{text:string,link:string,active?:bo
             {text.split('').map((value,i)=>{
                 return <motion.div 
                 key={i}
-                className="flex text-orange-600"
+                className="flex text-blue-500" 
                 transition={{
                     type:'spring',
                     delay:i*0.01}}
