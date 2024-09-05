@@ -1,19 +1,24 @@
 import React from 'react'
 import Link from 'next/link'
+import 'boxicons/css/boxicons.css'
 import StaggerHoverText from './ui/StaggerHoverText'
 
 const HomeNavbar = () => {
   return (
-    <div className='flex text-[25px] fixed top-0 left-0 p-4
-        right-0 items-center z-[10] justify-between w-full max-w-screen-lg mx-auto'>
+    <div className='flex text-[25px] fixed top-0 sm:top-[10px] left-0 px-4 py-2 
+        right-0 items-center z-[10] justify-between bg-black/50 backdrop-blur-md sm:rounded-2xl rounded-none w-full max-w-screen-lg mx-auto'>
       <div>
-        <h4 className='text-[29px] font-semibold'>Abin Antony Kattady</h4>
+        <h4 className='sm:text-[29px] text-[20px] font-regular'>Abin Antony Kattady</h4>
       </div>
-      <div className='flex text-[24px] items-center gap-5'>
-        <StaggerHoverText text='Works' link='#'  />
-        <StaggerHoverText text='About-Me' link='#'  />
-        <StaggerHoverText text='Contact' link='#'  />
-        <button className='bg-blue-800 px-4 py-2 rounded-full text-white'>Hire Me!</button>
+      <div className='sm:hidden flex'>
+        <i className='bx bx-menu-alt-right text-white text-[30px] p-2'></i>
+      </div>
+      <div className='text-[24px] sm:flex hidden items-center gap-5'>
+        <StaggerHoverText text='Works' link='#' />
+        <StaggerHoverText text='About-Me' link='#' />
+        <StaggerHoverText text='Contact' link='#' />
+        <button className='sizedbutton px-4 py-2  text-white'><span>
+          Hire Me!</span></button>
       </div>
     </div>
   )

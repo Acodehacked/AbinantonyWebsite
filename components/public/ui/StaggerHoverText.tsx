@@ -43,7 +43,7 @@ const StaggerHoverText = ({text,link,active}:{text:string,link:string,active?:bo
             {text.split('').map((value,i)=>{
                 return <motion.div 
                 key={i}
-                className="flex"
+                className="flex font-light"
                 transition={{
                     type:'spring',
                     delay:i*0.01}}
@@ -58,7 +58,7 @@ const StaggerHoverText = ({text,link,active}:{text:string,link:string,active?:bo
             {text.split('').map((value,i)=>{
                 return <motion.div 
                 key={i}
-                className="flex text-blue-500" 
+                className="flex font-light text-blue-500" 
                 transition={{
                     type:'spring',
                     delay:i*0.01}}
