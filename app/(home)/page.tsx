@@ -85,7 +85,7 @@ export default function Home() {
           <h2 className="text-7xl font-medium mb-10">Showcase</h2>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
             {showcase.map((item, index) => (
-              <motion.div initial={{opacity:0,y:10}} whileInView={{opacity:1,y:0}} transition={{delay:0.2,stiffness:40}}>
+              <motion.div key={index} initial={{opacity:0,y:10}} whileInView={{opacity:1,y:0}} transition={{delay:0.2,stiffness:40}}>
                 <Image src={item.image} alt="alt" className="w-full rounded-2xl" width={500} height={300} />
               </motion.div>
             ))}
