@@ -25,7 +25,7 @@ const Hero = () => {
   const y2 = useTransform(scrollY, [0, 1000], [0, 100]);
   const opacity = useTransform(scrollY, [300, 500], [1, 0]);
   return (
-    <motion.div ref={ref1} className='min-h-[100vh] bg-zinc-900/50 rounded-bl-[4rem] rounded-br-[4rem] flex relative overflow-hidden'>
+    <motion.div ref={ref1} className='min-h-[100vh] bg-white/50 rounded-bl-[4rem] rounded-br-[4rem] flex relative overflow-hidden'>
 
       <motion.div style={{ y: y2, opacity: opacity }} className='select-none absolute bottom-0 flex justify-center right-0 left-0 items-end h-[600px] w-[auto] z-[1]'>
         <div className='w-[500px] relative bottom-0 h-[500px] rounded-full bg-blue-600 opacity-55 blur-[80px] mb-[-300px]'>

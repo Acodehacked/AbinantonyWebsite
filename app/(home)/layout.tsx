@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Orbitron, Truculenta } from "next/font/google";
+import { Inter, Lato, Nunito, Orbitron, Poppins, Raleway, Truculenta } from "next/font/google";
 import "@/app/globals.css";
 import HomeNavbar from "@/components/public/Navbar";
 
-const inter = Truculenta({ subsets: ["latin"] });
+// const inter = Raleway({ weight: ['100','200','300','400','500','600','700','800','900'], subsets: ["latin"] });
+const inter = Lato({ weight: "400", subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
@@ -18,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${inter.className} dark`}>
-        <HomeNavbar />
-        {children}</body>
+      <body className={` ${inter.className} dark bg-neutral-900`}>
+        {children}
+        </body>
     </html>
   );
 }
