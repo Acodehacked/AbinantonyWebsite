@@ -82,7 +82,6 @@ export default function Home() {
 
 // components/Header.js
 
-import React from 'react'
 
 const LinkP = ({ name, link }: { name: string, link: string }) => {
   return (
@@ -94,7 +93,7 @@ const LinkP = ({ name, link }: { name: string, link: string }) => {
 }
 
 // components/About.js
-export function About() {
+function About() {
   return (
     <section className="p-3 text-center border-w pb-10 ">
       <p className=" text-gray-100 tracking-normal lg:text-4xl md:text-2xl text-3xl font-medium">Hi, I'm a Kerala Based full-stack developer and entrepreneur. </p>
@@ -104,13 +103,13 @@ export function About() {
 }
 
 // components/Projects.js
-export function Projects() {
+function Projects() {
   return (
     <section className="p-10 w-full">
       <h2 className="text-7xl font-medium mb-10">Featured Projects</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <MainCard
-          cards={["Fullstack Web Dev", "UI UX","App Dev"]}
+          cards={["Fullstack Web Dev", "UI UX", "App Dev"]}
           title="Construction Management App"
           subtitle="A web app for managing construction projects efficiently." />
         <MainCard
@@ -122,7 +121,7 @@ export function Projects() {
 }
 
 
-export const MainCard = ({ title, subtitle, link, cards }: { title: string, subtitle: string, link?: string, cards?: string[] }) => {
+const MainCard = ({ title, subtitle, link, cards }: { title: string, subtitle: string, link?: string, cards?: string[] }) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg pt-10">
       {cards && <div className="flex gap-2 flex-wrap mb-3">
@@ -138,13 +137,13 @@ export const MainCard = ({ title, subtitle, link, cards }: { title: string, subt
 }
 
 // components/Achievements.js
-export function Achievements() {
+function Achievements() {
   return (
     <section className="p-10 w-full">
       <h2 className="text-7xl font-medium mb-10">Achievements</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <MainCard
-          cards={["Fullstack Web Dev", "UI UX","App Dev"]}
+          cards={["Fullstack Web Dev", "UI UX", "App Dev"]}
           title="Construction Management App"
           subtitle="A web app for managing construction projects efficiently." />
         <MainCard
@@ -156,7 +155,7 @@ export function Achievements() {
 }
 
 // components/Contact.js
-export function Contact() {
+function Contact() {
   return (
     <section className="p-10 text-center">
       <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
