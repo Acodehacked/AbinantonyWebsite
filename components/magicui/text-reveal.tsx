@@ -13,7 +13,7 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start 0.8", "end 0.2"],
+    offset: ["start 0.8", "end 0.5"],
   });
 
   if (typeof children !== "string") {
@@ -23,9 +23,9 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
   const words = children.split(" ");
 
   return (
-    <div className="relative z-0 h-[150vh]"> {/* Ensure Enough Height */}
+    <div className="relative z-0 h-[100vh]"> {/* Ensure Enough Height */}
       <div ref={targetRef} className={cn("sticky top-20 mx-auto flex max-w-[1700px] pt-[100px] items-center px-[1rem] py-[5rem]")}>
-        <span className="flex flex-wrap p-5 normal-case text-3xl font-bold text-black/20 dark:text-white/20 md:text-4xl lg:text-5xl xl:text-6xl">
+        <span className="flex font-p font-regular mt-10 flex-wrap p-5 normal-case text-3xl  text-black/20 dark:text-white/20 md:text-3xl lg:text-4xl xl:text-5xl leading-10 tracking-tight">
           {words.map((word, i) => {
             const start = i / words.length;
             const end = start + 1 / words.length;

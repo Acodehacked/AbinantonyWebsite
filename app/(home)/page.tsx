@@ -1,5 +1,5 @@
 "use client"
-import {motion} from 'motion/react'
+import { motion } from 'motion/react'
 import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TextReveal } from "@/components/magicui/text-reveal";
@@ -85,7 +85,7 @@ export default function Home() {
           <h2 className="text-7xl font-medium mb-10">Showcase</h2>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
             {showcase.map((item, index) => (
-              <motion.div key={index} initial={{opacity:0,y:10}} whileInView={{opacity:1,y:0}} transition={{delay:0.2,stiffness:40}}>
+              <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, stiffness: 40 }}>
                 <Image src={item.image} alt="alt" className="w-full rounded-2xl" width={500} height={300} />
               </motion.div>
             ))}
@@ -93,19 +93,11 @@ export default function Home() {
         </section>
         <Achievements />
         <section className="min-h-screen relative">
-          <ScrollReveal
-            textClassName="text-xl w-full normal-case font-light"
-            containerClassName="max-w-[1700px] px-10 mx-auto mt-20"
-            baseOpacity={0.4}
-            enableBlur={true}
-            baseRotation={5}
-            blurStrength={20}
-          >
-            I’m Abin Antony, a passionate full-stack web developer and technology enthusiast. With a strong foundation in coding, UI/UX design, and cloud solutions, I create dynamic, efficient, and innovative applications. Whether it's building scalable web platforms, designing engaging user interfaces, or solving complex development challenges, I’m always excited to bring ideas to life. Let’s collaborate and build something incredible together!
-          </ScrollReveal>
-          {/* <TextReveal className="text-xl w-full normal-case max-w-[1700px] mx-auto mb-6 "> */}
 
-          {/* </TextReveal> */}
+          <TextReveal className="text-xl w-full normal-case max-w-[1700px] mx-auto mb-6 mt-20">
+          I’m Abin Antony, a passionate full-stack web developer and technology enthusiast. With a strong foundation in coding, UI/UX design, and cloud solutions, I create dynamic, efficient, and innovative applications. Whether it's building scalable web platforms, designing engaging user interfaces, or solving complex development challenges, I’m always excited to bring ideas to life. Let’s collaborate and build something incredible together!
+
+          </TextReveal>
         </section>
         <Contact />
         <footer className="flex md:flex-row flex-col  justify-between px-20 mb-20 p-4 font-light font-p text-white/70 normal-case w-full items-center">
@@ -113,7 +105,7 @@ export default function Home() {
           <p>2025 @ all rights reserved </p>
         </footer>
         <div className="relative min-h-[200px]">
-          <Image src="/imageabin.png" className="absolute z-[2] left-[50%] right-0 bottom-0 translate-x-[-50%] brightness-75"  style={{ opacity: 1 }} alt="alt" width={400} height={300} />
+          <Image src="/imageabin.png" className="absolute z-[2] left-[50%] right-0 bottom-0 translate-x-[-50%] brightness-75" style={{ opacity: 1 }} alt="alt" width={400} height={300} />
           <p className="font-p  md:text-[200px] sm:text-[150px] text-[50px] absolute bottom-0 right-0 text-center z-[1] left-0 normal-case text-white/10">abinantony.</p>
         </div>
       </main>
