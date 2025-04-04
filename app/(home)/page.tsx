@@ -42,7 +42,7 @@ export default function Home() {
               <p>Currently I have 5 year experience in UI Designing and Web development, Working for domestic and foreign clients. I am currently working at <Link href={'https://webcodecreators.com'} target="_blank" className="underline">Webcodecreators</Link> as Full stack Developer</p>
             </AnimatedContent>
             <AnimatedContent delay={300}>
-              <p>I like to describe myself as designer / developer with high discipline and enjoy working in a team or indepently</p>
+              <p>I like to describe myself as designer / developer with high discipline and enjoy working in a team or Independently</p>
             </AnimatedContent>
             <AnimatedContent delay={600}>
               <p className="text-2xl">Say Hi to <Link className="underline" href={'mailto:abina5448@gmail.com'}>abina5448@gmail.com</Link></p>
@@ -126,7 +126,7 @@ function About() {
   return (
     <section className="p-3 text-center border-w pb-10 font-p flex flex-col">
       <p className=" text-gray-100 tracking-tight lg:text-4xl md:text-2xl text-3xl font-medium">Hi, I'm a Kerala Based full-stack developer and entrepreneur. </p>
-      <p className="lg:text-3xl sm:tracking-tighter md:text-2xl text-md tracking-normal text-gray-500">I specialize in modern web technologies, UI/UX design, and software solutions. Passionate about coding, learning, and building innovative projects.</p>
+      <p className="lg:text-3xl sm:tracking-tighter md:text-2xl text-md tracking-normal text-gray-500">specialized in modern web technologies, UI/UX design, and software solutions. Passionate about coding, learning, and building innovative projects.</p>
       <p className="border border-white/30 mx-auto w-auto px-3 py-1 rounded-2xl text-zinc-200 mt-3">Currently Pursuing Btech at <Link className="underline underline-offset-2" href={'https://sjcetpalai.ac.in'}>SJCET PALAI</Link></p>
     </section>
   );
