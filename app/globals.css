@@ -155,3 +155,8 @@
   height: 0px;
   background-color: rgb(0, 7, 110);
 }
+
+::selection {
+  background-color: #1ceb61c7; /* Use Tailwind classes here */
+  color: #000; /* Use Tailwind classes here */
+}

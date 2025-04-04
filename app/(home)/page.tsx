@@ -4,7 +4,6 @@ import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern"
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TextReveal } from "@/components/magicui/text-reveal";
 import { WordRotate } from "@/components/magicui/word-rotate";
-import HomeNavbar from "@/components/public/Navbar";
 import { useInView } from "react-intersection-observer";
 import Hero from "@/components/public/hero";
 import Profile from "@/components/public/home/Profile";
@@ -20,18 +19,13 @@ import { ExternalLink, MouseIcon, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { HomeNavbar } from '@/components/home/homenav';
 
 
 export default function Home() {
   return (
     <div className="max-w-[1700px] overflow-hidden w-full mx-auto flex flex-col text-white min-h-screen">
-      <div className="p-5">
-        <nav className="w-full font-light text-xl py-6 md:gap-10 gap-2 flex md:flex-row flex-col items-center border-w text-white/80">
-          <p className="flex md:w-1/5 w-full capitalize leading-none font-normal pe-3"><span className="md:max-w-[200px]">Freelancer UI-UX Designer Full Stack Dev </span></p>
-          <p className="flex md:w-3/5 w-full capitalize leading-none font-normal text-center">Abin Antony </p>
-          <p className="flex md:justify-end md:w-1/5 w-full capitalize leading-none font-normal md:text-end">Kerala, India</p>
-        </nav>
-      </div>
+      <HomeNavbar />
       <section className="flex flex-col relative justify-center overflow-hidden min-h-[80vh]">
         <div className="relative z-[2] p-6">
 
@@ -95,7 +89,7 @@ export default function Home() {
         <Achievements />
         <section className="relative md:min-h-[400px] min-h-[120vh] ">
 
-          <TextReveal className="text-xl w-full normal-case max-w-[1700px] mx-auto mb-6 mt-20">
+          <TextReveal className="font-p md:text-3xl lg:text-4xl xl:text-5xl md:leading-[90px]  leading-normal sm:leading-[50px] md:tracking-tight tracking-tighter">
             I’m Abin Antony, a passionate full-stack web developer and technology enthusiast. With a strong foundation in coding, UI/UX design, and cloud solutions, I create dynamic, efficient, and innovative applications. Whether it's building scalable web platforms, designing engaging user interfaces, or solving complex development challenges, I’m always excited to bring ideas to life. Let’s collaborate and build something incredible together!
 
           </TextReveal>
@@ -143,37 +137,39 @@ function Projects() {
   return (
     <section className="p-10 w-full">
       <h2 className="md:text-7xl text-5xl font-medium mb-10">Featured Projects</h2>
-      <Carousel />
-      <div className="grid md:hidden grid-cols-1 gap-5">
+      {/* <Carousel /> */}
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-5">
         {EVENTS.map((item, index) => (
           <motion.div
             initial={{
               opacity: 0,
               y: 20,
             }}
-            animate={{
+            whileInView={{
               opacity: 1,
               y: 0,
               transition: {
                 duration: 0.5,
-                delay: 0.2 * index,
+                delay: index % 2 == 0 ? 0.2 : 0.4,
                 ease: "easeOut",
                 once: true,
               },
             }}
+            viewport={{ once: true }}
             key={"card" + index}
-            className="last:pr-[5%]  md:min-w-[600px] min-w-[360px]  rounded-3xl"
+            className="last:pr-[5%] rounded-3xl"
           >
-            <Image src={`/${item.image}`} className="w-full md:min-w-[600px] min-w-[360px] rounded-xl" alt="alt" width={600} height={300} />
-            <div className="p-2">
-              <h1 className="normal-case font-p text-2xl">⚡{item.title}</h1>
-              <p className="normal-case font-p font-light">{item.subtitle}</p>
-              <div className="flex gap-2 mt-2 flex-wrap">
-                {item.category.map((i, index) => <div className="text-sm tracking-wide text-white/40 px-2 py-1 rounded-full border border-white/40" key={index}>
-                  {i}
-                </div>)}
-              </div>
-            </div>
+            <Link href={`/projects/${item.title.replaceAll(' ','-')}/`}>
+              <Image src={`/${item.image}`} className="w-full rounded-xl" alt="alt" width={600} height={300} />
+              <div className="p-2">
+                <h1 className="normal-case font-p text-2xl">⚡{item.title}</h1>
+                <p className="normal-case font-p font-light">{item.subtitle}</p>
+                <div className="flex gap-2 mt-2 flex-wrap">
+                  {item.category.map((i, index) => <div className="text-sm tracking-wide text-white/40 px-2 py-1 rounded-full border border-white/40" key={index}>
+                    {i}
+                  </div>)}
+                </div>
+              </div></Link>
           </motion.div>
         ))}
       </div>
@@ -190,11 +186,11 @@ const MainCard = ({ title, subtitle, link, cards, isCase = true, year }: { title
           return <div className="text-black px-4 py-2 border rounded-3xl" key={index}>{item}</div>
         })}
       </div>}
-      <h3 className="text-4xl font-medium relative z-[1] text-black">{title}</h3>
+      <h3 className="md:text-4xl text-2xl font-medium relative z-[1] text-black">{title}</h3>
       <p className="text-gray-400 mt-2 relative z-[1] normal-case">{subtitle}</p>
       {isCase && <Link href={"#"} className="hover:underline text-black flex items-center mt-2">Case study <ExternalLink size={18} /></Link>
       }
-      {year && <p className="text-zinc-200 absolute font-p text-8xl bottom-[-20px] right-0">{year}</p>}
+      {year && <p className="text-zinc-200 absolute font-p md:text-8xl text-6xl bottom-[-10px] right-0">{year}</p>}
     </div>
   )
 }
