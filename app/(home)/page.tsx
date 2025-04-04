@@ -39,7 +39,7 @@ export default function Home() {
           {/* <header className=" text-center xl:text-[180px] lg:text-[100px] md:text-[50px] sm:text-[60px] text-[50px] font-bold tracking-wider mb-5">Abinantony</header> */}
           <div className="grid font-p font-light p-5 normal-case md:grid-cols-3 text-xl grid-cols-1 mt-8 md:gap-10 gap-10 tracking-normal">
             <AnimatedContent>
-              <p>Currently I have 5 year experience in UI Designing and Web development, Working for domestic and foreign clients. I am currently working at <Link href={'https://webcodecreators.com'} target="_blank" className="underline">Webcodecreators</Link> as Full stack Developer</p>
+              <p>Currently I have 4 year experience in UI Designing and Web development, Working for domestic and foreign clients. I am currently working at <Link href={'https://webcodecreators.com'} target="_blank" className="underline">Webcodecreators</Link> as Full stack Developer</p>
             </AnimatedContent>
             <AnimatedContent delay={300}>
               <p>I like to describe myself as designer / developer with high discipline and enjoy working in a team or Independently</p>
@@ -51,7 +51,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 grid-cols-1 mt-8 md:gap-10 gap-4 lg:text-7xl md:text-5xl text-4xl">
             <LinkP name="GITHUB" link="https://github.com/Acodehacked" />
             <LinkP name="INSTAGRAM" link="https://instagram.com/abin_antny" />
-            <LinkP name="LINKEDIN" link="https://linkedin.com/Abinantony" />
+            <LinkP name="LINKEDIN" link="https://www.linkedin.com/in/abin-antony-3a9a21314/" />
           </div>
         </div>
         <div className="absolute top-0 left-0  z-[1] h-full w-full">
@@ -159,8 +159,10 @@ function Projects() {
             key={"card" + index}
             className="last:pr-[5%] rounded-3xl"
           >
-            <Link href={`/projects/${item.title.replaceAll(' ','-')}/`}>
-              <Image src={`/${item.image}`} className="w-full rounded-xl" alt="alt" width={600} height={300} />
+            <Link href={`/projects/${item.title.replaceAll(' ', '-')}/`}>
+              <div className="overflow-hidden rounded-xl group">
+                <Image src={`/${item.image}`} className="w-full rounded-xl group-hover:scale-105 transition-all duration-300" alt="alt" width={600} height={300} />
+              </div>
               <div className="p-2">
                 <h1 className="normal-case font-p text-2xl">⚡{item.title}</h1>
                 <p className="normal-case font-p font-light">{item.subtitle}</p>

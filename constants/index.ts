@@ -1,9 +1,12 @@
+import { link } from "fs";
+
 export const EVENTS = [
     {
         title: "SJCET Bootcamp Website Redesign",
         subtitle: "A Modern Approach to Education Portals",
         category: ["Web Development", "UI/UX Design"],
         image: 'm1.png',
+        link:'https://iedc-sjcet.github.io',
         description: "Redesigned the official SJCET Bootcamp website using Next.js and Figma to create a seamless, modern, and responsive experience.",
         aim: "To enhance user experience by improving navigation, accessibility, and aesthetics, ensuring students and faculty can easily access resources.",
         challenges: "Ensuring seamless integration of legacy content while modernizing UI/UX, optimizing load times, and maintaining accessibility standards.",
@@ -17,6 +20,7 @@ export const EVENTS = [
         subtitle: "Building the Future of Cloud Solutions",
         category: ["Full Stack Development", "Cloud Computing"],
         image: 'm2.png',
+        link:'https://hardhatcloudtech.com',
         description: "Developed a full-stack web application for Hardhat Cloud Tech, integrating advanced backend services with a sleek, user-friendly frontend.",
         aim: "To create a robust online presence for Hardhat Cloud Tech and highlight their cloud-based solutions.",
         challenges: "Ensuring scalability and security while integrating multiple backend services and APIs.",
@@ -30,6 +34,7 @@ export const EVENTS = [
         subtitle: "A Stunning UI/UX Experience for a Futuristic Project",
         category: ["UI/UX Design", "Web Development"],
         image: 'm3.png',
+        link:'https://asthra.in',
         description: "Designed a visually appealing and user-friendly interface for the Asthra project.",
         aim: "To deliver a futuristic web design that aligns with Asthra’s innovative vision.",
         challenges: "Incorporating modern design trends while maintaining usability and accessibility.",
@@ -43,6 +48,7 @@ export const EVENTS = [
         subtitle: "Showcasing Innovation and Expertise in Web Development",
         category: ["Company Website", "Web Development"],
         image: 'm4.png',
+        link:'https://webcodecreators.com',
         description: "Built the official website for WebcodeCreators to highlight our projects, services, and expertise.",
         aim: "To establish a professional online presence for WebcodeCreators.",
         challenges: "Ensuring the site effectively communicates the brand’s expertise and capabilities.",
@@ -56,6 +62,7 @@ export const EVENTS = [
         subtitle: "An Exciting Gaming Experience with Godot Engine",
         category: ["Game Development", "Logic Programming"],
         image: 'm5.png',
+        link:'https://github.com/Acodehacked/Asthra-ECS-S2-Offline-Games-Official',
         description: "Developed an arcade-style game using Godot Engine and GDScript.",
         aim: "To create a fun and engaging arcade game with multiplayer functionality.",
         challenges: "Implementing real-time multiplayer features and optimizing performance.",
@@ -66,6 +73,7 @@ export const EVENTS = [
     },
     {
         title: "Hardhat Cloud Tech Dashboard",
+        link: 'https://hardhatcloudtech.com',
         subtitle: "A Comprehensive Admin Panel for Cloud Services",
         category: ["Web Application", "Cloud Computing"],
         image: 'm6.png',
@@ -79,6 +87,7 @@ export const EVENTS = [
     },
     {
         title: "ShowMyAds Dashboard",
+        link:'https://show.manolo.in',
         subtitle: "An Interactive Advertising Management Platform",
         category: ["Web Application", "Data Visualization"],
         image: 'm7.png',
@@ -95,6 +104,7 @@ export const EVENTS = [
         subtitle: "A Digital Gateway for Students and Faculty",
         category: ["Web Development", "Education"],
         image: 'm10.png',
+        link:'https://porukaracollege.in',
         description: "Built the official website for Porukara College using Laravel with Inertia.js, Next.js, and React.",
         aim: "To create a central platform for students and faculty to access resources and updates.",
         challenges: "Ensuring efficient content management and an intuitive user interface for both students and faculty.",
@@ -107,6 +117,7 @@ export const EVENTS = [
         subtitle: "All-in-One Solution for Freelancers and Clients",
         category: ["Web Application", "Project Management"],
         image: 'm8.png',
+        link:'https://freelix-seven.vercel.app',
         description: "Created a complete freelance management platform that streamlines project collaboration, invoicing, and communication between freelancers and clients.",
         aim: "To provide an all-in-one solution for freelancers and clients to manage projects efficiently.",
         challenges: "Integrating real-time collaboration features and ensuring secure transactions.",
@@ -120,6 +131,7 @@ export const EVENTS = [
         subtitle: "A No-Code Platform for Seamless App Development",
         category: ["AI & Automation", "Web Development"],
         image: 'm9.png',
+        link:'https://datagrind.ai',
         description: "Developed Datagrind.ai, a platform that enables users to create apps effortlessly using Java, Python, Next.js, and GraphQL.",
         aim: "To simplify application development for non-technical users and businesses.",
         challenges: "Building a flexible, no-code environment while maintaining app performance and security.",
@@ -133,6 +145,7 @@ export const EVENTS = [
         subtitle: "A Unique Way to Study the Bible",
         category: ["Web Application", "Education"],
         image: 'm11.png',
+        link:'https://bibliya.in',
         description: "Developed Bibliya, a web application that allows users to study the Bible through interactive quizzes.",
         aim: "To make Bible study engaging and interactive.",
         challenges: "Creating an engaging learning experience with gamified quizzes and tracking user progress.",
@@ -141,19 +154,6 @@ export const EVENTS = [
         key_features: ["Interactive quizzes", "User progress tracking", "Cloud storage"],
         lessons_learned: "The effectiveness of gamification in educational applications."
     },
-    {
-        title: "Porukara College Official Website",
-        subtitle: "A Digital Gateway for Students and Faculty",
-        category: ["Web Development", "Education"],
-        image: 'm10.png',
-        description: "Built the official website for Porukara College using Laravel with Inertia.js, Next.js, and React.",
-        aim: "To create a central platform for students and faculty to access resources and updates.",
-        challenges: "Ensuring efficient content management and an intuitive user interface for both students and faculty.",
-        project_goals: "Develop a responsive and feature-rich educational website.",
-        tech_stack: ["Laravel", "Inertia.js", "Next.js", "React"],
-        key_features: ["Student and faculty portals", "Content management system", "Interactive event calendar"],
-        lessons_learned: "The importance of modular development for maintainability in educational platforms."
-    }
 ];
 
 export const showcase = [

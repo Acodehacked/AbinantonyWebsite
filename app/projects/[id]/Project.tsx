@@ -7,6 +7,7 @@ import AnimatedContent from "@/components/ui/AnimatedContent/AnimatedContent"
 import BlurText from "@/components/ui/BlurText/BlurText"
 import { EVENTS } from "@/constants"
 import { cn } from "@/lib/utils"
+import { ExternalLink } from "lucide-react"
 import { useScroll, useTransform, motion } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
@@ -24,6 +25,7 @@ const Projects = ({ project }: {
         project_goals: string;
         tech_stack: string[];
         key_features: string[];
+        link?:string;
         lessons_learned: string;
     } | null
 }) => {
@@ -52,7 +54,8 @@ const Projects = ({ project }: {
                     {/* <h1 className="text-center font-p xl:text-[100px] lg:text-[70px] md:text-[30px] text-[50px] font-medium md:leading-[80px] leading-10 tracking-tighter mb-5 ">{project?.title}</h1> */}
                     <p className="text-center  sm:text-xl text-sm text-white/50 tracking-wider">{project?.subtitle}</p>
                     <div className="flex justify-center gap-2">
-                        <Link href="#" className="px-3 py-2 rounded-full border border-white/20 text-white/20 md:text-xl  mt-10">Live View Not Available</Link>
+                        {project?.link ?  <Link href={project?.link} target="_blank" className="px-3 py-2 rounded-full border border-green-400 text-green-400 md:text-xl flex items-center gap-4  mt-10">Live View <ExternalLink /></Link> : 
+                        <Link href="#" className="px-3 py-2 rounded-full border border-white/20 text-white/20 md:text-xl  mt-10">Live View Not Available</Link>}
                         <Link href="/" className="px-3 py-2 rounded-full border border-white/20 hover:border-white/40 text-white/20 hover:text-white/40 md:text-xl  mt-10">Home</Link>
                     </div>
                     <motion.div
@@ -111,7 +114,7 @@ const Projects = ({ project }: {
                     className="text-center text-[100px] mb-20 font-regular tracking-[-0.04em] leading-[60px] text-white/5 font-semibold mt-10"
                 />
                 <div className="w-full text-5xl flex gap-5 px-10 border-w pb-5 overflow-hidden">
-                    <motion.div initial={{ y: 100, rotate: 1 }} transition={{ stiffness: 10, duration: 0.5 }} whileInView={{ y: 0, rotate: 0 }} 
+                    <motion.div initial={{ y: 200, rotate: 10 }} transition={{ stiffness: 10, duration: 0.5 }} whileInView={{ y: 0, rotate: 0 }} 
                     className="flex md:flex-row flex-col md:text-5xl text-2xl  gap-5 ">
                         <p className="">Challenges</p>
                         <p className="normal-case text-end md:text-3xl text-xl font-p font-light tracking-normal text-white/50">
@@ -120,8 +123,8 @@ const Projects = ({ project }: {
                     </motion.div>
 
                 </div>
-                <div className="w-full px-10 mt-5 ">
-                    <motion.div initial={{ y: -100, rotate: -1 }} transition={{ stiffness: 40, duration: 0.5 }} whileInView={{ y: 0, rotate: 0 }} 
+                <div className="w-full px-10 pt-5 overflow-hidden">
+                    <motion.div style={{transformOrigin:'left'}} initial={{ y: -50, rotate: -10 }} transition={{ stiffness: 40, duration: 0.5 }} whileInView={{ y: 0, rotate: 0 }} 
                     className="flex md:text-5xl text-2xl  gap-5 md:flex-row flex-col ">
                         <p className="shrink-0">Tech Stack</p>
                         <p className="normal-case flex flex-wrap md:gap-3 gap-1 justify-end w-full text-end md:text-3xl text-xl font-p font-light tracking-normal text-white/50">
