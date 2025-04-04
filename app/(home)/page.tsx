@@ -5,6 +5,7 @@ import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { TextReveal } from "@/components/magicui/text-reveal";
 import { WordRotate } from "@/components/magicui/word-rotate";
 import HomeNavbar from "@/components/public/Navbar";
+import { useInView } from "react-intersection-observer";
 import Hero from "@/components/public/hero";
 import Profile from "@/components/public/home/Profile";
 import { Carousel } from "@/components/public/ui/card-carousel";
@@ -13,7 +14,7 @@ import FuzzyText from "@/components/ui/FuzzyText/FuzzyText";
 import ScrollReveal from "@/components/ui/ScrollReveal/ScrollReveal";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { showcase } from "@/constants";
+import { EVENTS, showcase } from "@/constants";
 import { cn } from "@/lib/utils";
 import { ExternalLink, MouseIcon, Send } from "lucide-react";
 import Image from "next/image";
@@ -82,8 +83,8 @@ export default function Home() {
         <Projects />
         <TechStack />
         <section className="p-10 w-full">
-          <h2 className="text-7xl font-medium mb-10">Showcase</h2>
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-5">
+          <h2 className="md:text-7xl text-5xl font-medium mb-10 mt-0 p-0">Showcase <span className='text-green-500 font-p text-8xl p-0 m-0 leading-[20px]'>.</span></h2>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
             {showcase.map((item, index) => (
               <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, stiffness: 40 }}>
                 <Image src={item.image} alt="alt" className="w-full rounded-2xl" width={500} height={300} />
@@ -92,15 +93,15 @@ export default function Home() {
           </div>
         </section>
         <Achievements />
-        <section className="min-h-screen relative">
+        <section className="relative md:min-h-[400px] min-h-[120vh] ">
 
           <TextReveal className="text-xl w-full normal-case max-w-[1700px] mx-auto mb-6 mt-20">
-          I’m Abin Antony, a passionate full-stack web developer and technology enthusiast. With a strong foundation in coding, UI/UX design, and cloud solutions, I create dynamic, efficient, and innovative applications. Whether it's building scalable web platforms, designing engaging user interfaces, or solving complex development challenges, I’m always excited to bring ideas to life. Let’s collaborate and build something incredible together!
+            I’m Abin Antony, a passionate full-stack web developer and technology enthusiast. With a strong foundation in coding, UI/UX design, and cloud solutions, I create dynamic, efficient, and innovative applications. Whether it's building scalable web platforms, designing engaging user interfaces, or solving complex development challenges, I’m always excited to bring ideas to life. Let’s collaborate and build something incredible together!
 
           </TextReveal>
         </section>
         <Contact />
-        <footer className="flex md:flex-row flex-col  justify-between px-20 mb-20 p-4 font-light font-p text-white/70 normal-case w-full items-center">
+        <footer className="flex md:flex-row flex-col  justify-between px-20 md:mb-20 mb-[200px] p-4 font-light font-p text-white/70 normal-case w-full items-center">
           <p className="me-3">Abin Antony Kattady</p>
           <p>2025 @ all rights reserved </p>
         </footer>
@@ -141,8 +142,41 @@ function About() {
 function Projects() {
   return (
     <section className="p-10 w-full">
-      <h2 className="text-7xl font-medium mb-10">Featured Projects</h2>
+      <h2 className="md:text-7xl text-5xl font-medium mb-10">Featured Projects</h2>
       <Carousel />
+      <div className="grid md:hidden grid-cols-1 gap-5">
+        {EVENTS.map((item, index) => (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.5,
+                delay: 0.2 * index,
+                ease: "easeOut",
+                once: true,
+              },
+            }}
+            key={"card" + index}
+            className="last:pr-[5%]  md:min-w-[600px] min-w-[360px]  rounded-3xl"
+          >
+            <Image src={`/${item.image}`} className="w-full md:min-w-[600px] min-w-[360px] rounded-xl" alt="alt" width={600} height={300} />
+            <div className="p-2">
+              <h1 className="normal-case font-p text-2xl">⚡{item.title}</h1>
+              <p className="normal-case font-p font-light">{item.subtitle}</p>
+              <div className="flex gap-2 mt-2 flex-wrap">
+                {item.category.map((i, index) => <div className="text-sm tracking-wide text-white/40 px-2 py-1 rounded-full border border-white/40" key={index}>
+                  {i}
+                </div>)}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
@@ -262,21 +296,26 @@ function TechStack() {
     ]
   };
 
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
     <section className="p-10">
-      <h2 className="text-4xl  font-medium mb-6 text-center">My Technology Stack</h2>
-      <div className="grid grid-cols-1">
+      <h2 className="text-4xl font-medium mb-6 text-center">My Technology Stack</h2>
+      <div className="grid grid-cols-1" ref={ref}>
         {Object.entries(categories).map(([category, items], index) => (
           <div key={index} className="mb-8">
             <h3 className="text-xl font-medium mb-4 text-white/30">{category}</h3>
             <div className="flex font-p 2 flex-wrap gap-1">
               {items.map((item, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="border border-gray-400/50 text-white px-4 py-1 normal-case rounded-full "
+                  className="border border-gray-400/50 text-white px-4 py-1 normal-case rounded-full"
+                  initial={{ opacity: 0, backgroundColor: "rgba(255, 255, 255, 1)" }}
+                  animate={inView ? { opacity: 1, backgroundColor: "rgba(255, 255, 255, 0)" } : {}}
+                  transition={{ duration: 1, ease: "easeOut", delay: i * 0.04 }}
                 >
                   {item}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

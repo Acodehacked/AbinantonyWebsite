@@ -24,8 +24,8 @@ export const TextReveal: FC<TextRevealProps> = ({ children, className }) => {
 
   return (
     <div className="relative z-0 h-[100vh]"> {/* Ensure Enough Height */}
-      <div ref={targetRef} className={cn("sticky top-20 mx-auto flex max-w-[1700px] pt-[100px] items-center px-[1rem] py-[5rem]")}>
-        <span className="flex font-p font-regular mt-10 flex-wrap p-5 normal-case text-3xl  text-black/20 dark:text-white/20 md:text-3xl lg:text-4xl xl:text-5xl leading-10 tracking-tight">
+      <div ref={targetRef} className={cn("sticky top-20 mx-auto flex max-w-[1700px] pt-[100px] items-center px-[1rem] py-[5rem] ")}>
+        <span className="flex font-p font-regular mt-10 flex-wrap p-5 normal-case text-3xl  text-black/20 dark:text-white/20 md:text-3xl lg:text-4xl xl:text-5xl md:leading-[3rem] leading-10 tracking-tight">
           {words.map((word, i) => {
             const start = i / words.length;
             const end = start + 1 / words.length;
