@@ -210,6 +210,11 @@ function Achievements() {
           subtitle="A web app for managing construction projects efficiently." />
         <MainCard
           isCase={false}
+          year={2020}
+          title="Certification in DSA Assement"
+          subtitle="Certification in Data Structure and alogorithms Assement A+" />
+        <MainCard
+          isCase={false}
           year={2024}
           title="Founder of Webcodecreators"
           subtitle="An analytics dashboard for advertisement publishers." />
