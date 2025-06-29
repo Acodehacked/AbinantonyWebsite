@@ -81,12 +81,30 @@
   body {
     @apply bg-background text-foreground uppercase tracking-tight;
   }
-  .border-w{
+
+  .border-w {
     @apply border-b md:border-white/70 border-white/20 px-5;
   }
-  .font-p{
+
+  .font-p {
     @apply font-[Poppins];
   }
+
+}
+
+/* global.css */
+.futuristic-glow {
+  text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+}
+
+.neon-border {
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.1), 0 0 10px rgba(0, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.neon-border:hover {
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.4), 0 0 24px rgba(0, 255, 255, 0.3);
+  transform: scale(1.05);
 }
 
 .justifyCenter {
@@ -157,6 +175,8 @@
 }
 
 ::selection {
-  background-color: #1ceb61c7; /* Use Tailwind classes here */
-  color: #000; /* Use Tailwind classes here */
+  background-color: #1ceb61c7;
+  /* Use Tailwind classes here */
+  color: #000;
+  /* Use Tailwind classes here */
 }

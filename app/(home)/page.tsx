@@ -20,6 +20,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HomeNavbar } from '@/components/home/homenav';
+import { FlickeringGrid } from '@/components/magicui/flickering-grid';
 
 
 export default function Home() {
@@ -55,16 +56,17 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute top-0 left-0  z-[1] h-full w-full">
-          <AnimatedGridPattern
-            numSquares={50}
-            maxOpacity={0.08}
-            duration={3}
-            repeatDelay={1}
-            className={cn(
-              "md:[mask-image:radial-gradient(500px_circle_at_center,white,transparent)] [mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
-              "inset-x-0 inset-y-[-70%] h-[200%] skew-y-12 opacity-30",
-            )}
+          <FlickeringGrid
+            className="relative opacity-50 inset-0 z-0 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
+            squareSize={4}
+            gridGap={6}
+            color="#ac7ed7"
+            maxOpacity={0.5}
+            flickerChance={0.1}
+            height={1700}
+            width={1900}
           />
+
         </div>
       </section>
 
@@ -100,8 +102,8 @@ export default function Home() {
           <p>2025 @ all rights reserved </p>
         </footer>
         <div className="relative min-h-[200px]">
-          <Image src="/imageabin.png" className="absolute z-[2] left-[50%] right-0 bottom-0 translate-x-[-50%] brightness-75" style={{ opacity: 1 }} alt="alt" width={400} height={300} />
           <p className="font-p  md:text-[200px] sm:text-[150px] text-[50px] absolute bottom-0 right-0 text-center z-[1] left-0 normal-case text-white/10">abinantony.</p>
+          <Image src="/imageabin.png" className="absolute z-[0] sm:opacity-100 opacity-0 left-[50%] right-0 bottom-0 translate-x-[-50%] brightness-75" style={{ opacity: 1 }} alt="alt" width={400} height={300} />
         </div>
       </main>
     </div>
@@ -138,42 +140,59 @@ function Projects() {
     <section className="p-10 w-full">
       <h2 className="md:text-7xl text-5xl font-medium mb-10">Featured Projects</h2>
       {/* <Carousel /> */}
-      <div className="grid sm:grid-cols-2 grid-cols-1 gap-5">
+      <div className="grid sm:grid-cols-3 grid-cols-1 gap-[10px_40px]">
         {EVENTS.map((item, index) => (
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{
               opacity: 1,
               y: 0,
               transition: {
                 duration: 0.5,
-                delay: index % 2 == 0 ? 0.2 : 0.4,
+                delay: index % 2 === 0 ? 0.2 : 0.4,
                 ease: "easeOut",
-                once: true,
               },
             }}
             viewport={{ once: true }}
             key={"card" + index}
-            className="last:pr-[5%] rounded-3xl"
+            className="last:pr-[5%] rounded-3xl overflow-visible"
           >
             <Link href={`/projects/${item.title.replaceAll(' ', '-')}/`}>
-              <div className="overflow-hidden rounded-xl group">
-                <Image src={`/${item.image}`} className="w-full rounded-xl group-hover:scale-105 transition-all duration-300" alt="alt" width={600} height={300} />
+              <div className="relative group rounded-xl overflow-visible">
+                {/* Glow Border Wrapper */}
+                <div className="absolute -inset-1 rounded-[inherit] z-0 transition-all duration-500 scale-100 opacity-0 group-hover:scale-105 group-hover:opacity-50 pointer-events-none">
+                  <div className="w-full h-full rounded-[inherit] blur-2xl bg-[conic-gradient(from_0deg,_#00c6ff,_#5f00ff,_#ff4ecd,_#ffc300,_#00c6ff)]" />
+                </div>
+
+                {/* Image Layer */}
+                <div className="relative z-10 overflow-hidden rounded-xl">
+                  <Image
+                    src={`/${item.image}`}
+                    alt="alt"
+                    width={600}
+                    height={300}
+                    className="w-full rounded-xl transition-all duration-1000 ease-in-out group-hover:scale-105"
+                  />
+                </div>
               </div>
               <div className="p-2">
                 <h1 className="normal-case font-p text-2xl">⚡{item.title}</h1>
                 <p className="normal-case font-p font-light">{item.subtitle}</p>
                 <div className="flex gap-2 mt-2 flex-wrap">
-                  {item.category.map((i, index) => <div className="text-sm tracking-wide text-white/40 px-2 py-1 rounded-full border border-white/40" key={index}>
-                    {i}
-                  </div>)}
+                  {item.category.map((i, index) => (
+                    <div
+                      className="text-sm tracking-wide text-white/40 px-2 py-1 rounded-full border border-white/40"
+                      key={index}
+                    >
+                      {i}
+                    </div>
+                  ))}
                 </div>
-              </div></Link>
+              </div>
+            </Link>
           </motion.div>
         ))}
+
       </div>
     </section>
   );
@@ -302,20 +321,20 @@ function TechStack() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="p-10">
-      <h2 className="text-4xl font-medium mb-6 text-center">My Technology Stack</h2>
-      <div className="grid grid-cols-1" ref={ref}>
+    <section className="p-10 ">
+      <h2 className="text-4xl font-bold text-center mb-10 text-white tracking-wide">My Technology Stack</h2>
+      <div className="space-y-12 max-w-7xl mx-auto" ref={ref}>
         {Object.entries(categories).map(([category, items], index) => (
-          <div key={index} className="mb-8">
-            <h3 className="text-xl font-medium mb-4 text-white/30">{category}</h3>
-            <div className="flex font-p 2 flex-wrap gap-1">
+          <div key={index}>
+            <h3 className="text-2xl mb-4 text-white/40 uppercase tracking-wider">{category}</h3>
+            <div className="flex flex-wrap gap-3">
               {items.map((item, i) => (
                 <motion.div
                   key={i}
-                  className="border border-gray-400/50 text-white px-4 py-1 normal-case rounded-full"
-                  initial={{ opacity: 0, backgroundColor: "rgba(255, 255, 255, 1)" }}
-                  animate={inView ? { opacity: 1, backgroundColor: "rgba(255, 255, 255, 0)" } : {}}
-                  transition={{ duration: 1, ease: "easeOut", delay: i * 0.04 }}
+                  className="px-4 py-2 rounded-full border border-white/20 text-white text-sm font-medium backdrop-blur-sm bg-white/5 shadow-inner neon-border"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.015 }}
                 >
                   {item}
                 </motion.div>
