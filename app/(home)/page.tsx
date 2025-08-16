@@ -19,6 +19,7 @@ import { ExternalLink, MouseIcon, Send } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import gsap from 'gsap';
 import { HomeNavbar } from '@/components/home/homenav';
 import { FlickeringGrid } from '@/components/magicui/flickering-grid';
 
@@ -56,7 +57,7 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute top-0 left-0  z-[1] h-full w-full">
-          <FlickeringGrid
+          {/* <FlickeringGrid
             className="relative opacity-50 inset-0 z-0 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
             squareSize={4}
             gridGap={6}
@@ -65,7 +66,7 @@ export default function Home() {
             flickerChance={0.1}
             height={1700}
             width={1900}
-          />
+          /> */}
 
         </div>
       </section>
@@ -83,7 +84,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
             {showcase.map((item, index) => (
               <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, stiffness: 40 }}>
-                <Image src={item.image} alt="alt" className="w-full rounded-2xl" width={500} height={300} />
+                <MagneticImage src={item.image} alt="alt" className="w-full rounded-2xl" width={500} height={300} />
               </motion.div>
             ))}
           </div>
@@ -106,6 +107,94 @@ export default function Home() {
           <Image src="/imageabin.png" className="absolute z-[0] sm:opacity-100 opacity-0 left-[50%] right-0 bottom-0 translate-x-[-50%] brightness-75" style={{ opacity: 1 }} alt="alt" width={400} height={300} />
         </div>
       </main>
+    </div>
+  );
+}
+
+// MagneticImage: makes images subtly follow the cursor (magnetic effect)
+function MagneticImage({ src, alt, width, height, className }: { src: string; alt?: string; width?: number; height?: number; className?: string }) {
+  const wrapRef = React.useRef<HTMLDivElement | null>(null);
+  const imgRef = React.useRef<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    // Skip magnetic behaviour on touch devices (hover-only)
+    if (typeof window !== 'undefined' && 'ontouchstart' in window) return;
+
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+
+    // Next/Image renders an <img> inside the wrapper; prefer animating the <img>,
+    // but fall back to animating the wrapper itself if not available.
+    const foundImg = wrap.querySelector('img');
+    imgRef.current = (foundImg as HTMLElement) || wrap;
+
+    if (imgRef.current) {
+      imgRef.current.style.willChange = 'transform';
+      imgRef.current.style.transformOrigin = 'center center';
+      // ensure 3D transforms render correctly
+      (wrap as HTMLElement).style.transformStyle = 'preserve-3d';
+    }
+  }, []);
+
+  const getTarget = () => imgRef.current || wrapRef.current;
+
+  const onMove = (e: React.MouseEvent) => {
+    const wrap = wrapRef.current;
+    const target = getTarget();
+    if (!wrap || !target) return;
+
+    const rect = wrap.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const dx = (x - cx) / cx; // -1 .. 1
+    const dy = (y - cy) / cy; // -1 .. 1
+
+    const strength = Math.min(24, rect.width * 0.05); // scale with size
+    const tx = dx * strength;
+    const ty = dy * strength * 0.6;
+    const rotateX = dy * 6; // degrees
+    const rotateY = -dx * 6;
+
+    // kill any previous tweens on this target to avoid buildup
+    gsap.killTweensOf(target);
+    gsap.to(target as HTMLElement, {
+      x: tx,
+      y: ty,
+      rotateX,
+      rotateY,
+      scale: 1.02,
+      transformPerspective: 800,
+      duration: 0.35,
+      ease: 'power3.out',
+    });
+  };
+
+  const onEnter = () => {
+    const target = getTarget();
+    if (!target) return;
+    gsap.killTweensOf(target);
+    gsap.to(target as HTMLElement, { scale: 1.03, duration: 0.25, ease: 'power3.out' });
+  };
+
+  const onLeave = () => {
+    const target = getTarget();
+    if (!target) return;
+    gsap.killTweensOf(target);
+    gsap.to(target as HTMLElement, { x: 0, y: 0, rotateX: 0, rotateY: 0, scale: 1, duration: 0.45, ease: 'power3.out' });
+  };
+
+  return (
+    <div
+      ref={wrapRef}
+      onMouseMove={onMove}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
+      className={`w-full rounded-2xl ${className || ''}`}
+      style={{ perspective: 900 }}
+    >
+      <Image src={src} alt={alt || 'image'} width={width || 500} height={height || 300} className="w-full block rounded-xl" />
     </div>
   );
 }

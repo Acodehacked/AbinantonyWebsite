@@ -133,8 +133,8 @@ const Projects = ({ project }: {
                     </motion.div>
                 </div>
 
-                <div className="flex relative normal-case mx-20 rounded-2xl py-20 justify-center my-[150px] bg-zinc-100 text-zinc-900 font-p  text-center  items-center">
-                    <span className="relative z-[1] md:text-5xl text-3xl">"{project?.lessons_learned}"</span>
+                <div className="flex relative normal-case md:mx-20 mx-10 rounded-2xl py-20 justify-center md:my-[150px] my-[20px] bg-zinc-100 text-zinc-900 font-p  text-center  items-center">
+                    <span className="relative z-[1] md:text-5xl sm:text-3xl text-xl">"{project?.lessons_learned}"</span>
                     <span className="absolute left-[50%] top-[50%] lg:text-8xl md:text-5xl text-3xl font-bold text-zinc-200 translate-x-[-50%] font-p translate-y-[-50%]">LESSON LEARNED</span>
                 </div>
 

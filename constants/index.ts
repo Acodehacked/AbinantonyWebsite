@@ -2,6 +2,26 @@ import { link } from "fs";
 
 export const EVENTS = [
     {
+        "title": "DailyTaste E commerce Website",
+        "subtitle": "Taste the Purity — A Modern Digital Storefront",
+        "category": ["E-commerce", "UI/UX Design", "Food & Beverages"],
+        "image": "m13.png",
+        "link": "https://dailytaste.com",
+        "description": "Developed a clean and user-friendly e-commerce platform for DailyTaste, a food brand specializing in spices, powders, oils, rice, and kitchen essentials. The website highlights product purity, certified trust, and effortless navigation for customers seeking authentic flavors.",
+        "aim": "To craft a digital shopping experience that reflects DailyTaste’s motto 'Taste the Purity', builds customer trust with certifications, and makes discovering and buying food products seamless across all devices.",
+        "challenges": "The primary challenge was creating a design that communicates purity and trustworthiness while balancing product variety without overwhelming the user. Maintaining fast performance, mobile responsiveness, and consistency across different product categories was critical.",
+        "project_goals": "Design a scalable and conversion-friendly storefront with clear product categorization, an intuitive checkout flow, and sections that emphasize certifications, purity, and customer trust.",
+        "tech_stack": ["Next.js", "Tailwind CSS", "tRPC", "PostgreSQL", "Framer Motion"],
+        "key_features": [
+            "Category-wise browsing for spices, oils, rice, and more",
+            "Dedicated certification and trust section",
+            "Optimized product search with smart suggestions",
+            "Mobile-first responsive design",
+            "Easy cart and checkout process"
+        ],
+        "lessons_learned": "Designing for a food and grocery brand requires prioritizing trust and clarity. This project highlighted the importance of certification displays, minimal design for easy product discovery, and building a fast, mobile-friendly shopping flow."
+    },
+    {
         "title": "MuLearn App Redesign",
         "subtitle": "Reimagining Peer-Learning with an Intuitive Experience",
         "category": ["Mobile App Design", "UI/UX Overhaul", "EdTech"],
