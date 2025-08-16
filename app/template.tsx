@@ -87,12 +87,12 @@ export default function Template({ children }: { children: React.ReactNode }) {
       >
         <div
           ref={textRef}
-          className="text-white text-5xl md:text-7xl font-bold tracking-tight select-none flex space-x-1"
+          className="text-white text-3xl md:text-5xl font-bold tracking-tight select-none flex space-x-1"
         >
           {word.split("").map((ch, i) => (
             <span
               key={i}
-              className="letter inline-block overflow-hidden h-[1em] w-[1.2ch] text-center"
+              className="letter inline-block overflow-hidden h-[1em] w-[1.3ch] text-center"
               data-char={ch}
             >
               {ch}
