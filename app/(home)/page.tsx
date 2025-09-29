@@ -8,9 +8,9 @@ import React from "react";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-white font-lato">
+    <div className="min-h-screen overflow-hidden bg-[#0C0C0C] relative text-white font-lato">
       {/* Navigation */}
-      <nav className="flex items-center justify-between p-6 lg:px-12">
+      <nav className="flex relative z-[3] items-center justify-between p-6 lg:px-12">
         <div className="text-xl font-bold font-poppins">ABIN ANTONY KATTADY</div>
         <div className="hidden md:flex space-x-8">
           <Link
@@ -69,11 +69,10 @@ export default function HomePage() {
           </div>
         </div>
         <iframe
-          className="aspect-[16/9] md:translate-y-[200px] translate-y-[300px] scale-[1.5] w-full absolute right-0 top-0 h-full z-[1]"
+          className=" h-screen scale-[1.3] absolute left-0 top-0 w-screen z-[1]"
           src="https://my.spline.design/cardsgear-Nnk6sc2uR4qgUaY67tba7XQ9/"
-          width="100%"
-          height="100%"
         ></iframe>
+        {/* <div className="bg-black absollute bottom-0 left-0 right-0 h-[100px] z-[2]"></div> */}
       </section>
 
       {/* Featured Projects */}
