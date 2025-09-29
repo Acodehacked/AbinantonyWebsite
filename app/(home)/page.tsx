@@ -1,437 +1,554 @@
-"use client"
-import { motion } from 'motion/react'
-import { AnimatedGridPattern } from "@/components/magicui/animated-grid-pattern";
-import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
-import { TextReveal } from "@/components/magicui/text-reveal";
-import { WordRotate } from "@/components/magicui/word-rotate";
-import { useInView } from "react-intersection-observer";
-import Hero from "@/components/public/hero";
-import Profile from "@/components/public/home/Profile";
-import { Carousel } from "@/components/public/ui/card-carousel";
-import AnimatedContent from "@/components/ui/AnimatedContent/AnimatedContent";
-import FuzzyText from "@/components/ui/FuzzyText/FuzzyText";
-import ScrollReveal from "@/components/ui/ScrollReveal/ScrollReveal";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { EVENTS, showcase } from "@/constants";
-import { cn } from "@/lib/utils";
-import { ExternalLink, MouseIcon, Send } from "lucide-react";
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { ExternalLink, Send, MouseIcon } from "lucide-react";
+import { EVENTS, showcase } from "@/constants";
 import React from "react";
-import gsap from 'gsap';
-import { HomeNavbar } from '@/components/home/homenav';
-import { FlickeringGrid } from '@/components/magicui/flickering-grid';
 
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="max-w-[1700px] overflow-hidden w-full mx-auto flex flex-col text-white min-h-screen">
-      <HomeNavbar />
-      <section className="flex flex-col relative justify-center overflow-hidden min-h-[80vh]">
-        <div className="relative z-[2] p-6">
+    <div className="min-h-screen bg-[#0C0C0C] text-white font-lato">
+      {/* Navigation */}
+      <nav className="flex items-center justify-between p-6 lg:px-12">
+        <div className="text-xl font-bold font-poppins">ABIN ANTONY KATTADY</div>
+        <div className="hidden md:flex space-x-8">
+          <Link
+            href="#work"
+            className="text-[#BFBFBF] hover:text-white transition-colors"
+          >
+            WORK
+          </Link>
+          <Link
+            href="#about"
+            className="text-[#BFBFBF] hover:text-white transition-colors"
+          >
+            ABOUT
+          </Link>
+          <Link
+            href="#contact"
+            className="text-[#BFBFBF] hover:text-white transition-colors"
+          >
+            CONTACT
+          </Link>
+        </div>
+        <button className="bg-white text-black px-6 py-2 rounded-full hover:bg-[#E0E0E0] transition-colors">
+          GET IN TOUCH
+        </button>
+      </nav>
 
-          <WordRotate
-            className="text-center xl:text-[180px] lg:text-[100px] md:text-[50px] sm:text-[60px] text-[50px] font-bold tracking-tight mb-5"
-            words={["AbinAntony", "Web Dev", "UIDESIGNER", "APP DEV", "ENGINEER", "CREATOR", "FREELANCER"]}
-          />
-          <AnimatedContent>
-            <About />
-          </AnimatedContent>
-          {/* <header className=" text-center xl:text-[180px] lg:text-[100px] md:text-[50px] sm:text-[60px] text-[50px] font-bold tracking-wider mb-5">Abinantony</header> */}
-          <div className="grid font-p font-light p-5 normal-case md:grid-cols-3 text-xl grid-cols-1 mt-8 md:gap-10 gap-10 tracking-normal">
-            <AnimatedContent>
-              <p>Currently I have 4 year experience in UI Designing and Web development, Working for domestic and foreign clients. I am currently working at <Link href={'https://webcodecreators.com'} target="_blank" className="underline">Webcodecreators</Link> as Full stack Developer</p>
-            </AnimatedContent>
-            <AnimatedContent delay={300}>
-              <p>I like to describe myself as designer / developer with high discipline and enjoy working in a team or Independently</p>
-            </AnimatedContent>
-            <AnimatedContent delay={600}>
-              <p className="text-2xl">Say Hi to <Link className="underline" href={'mailto:abina5448@gmail.com'}>abina5448@gmail.com</Link></p>
-            </AnimatedContent>
-          </div>
-          <div className="grid md:grid-cols-3 grid-cols-1 mt-8 md:gap-10 gap-4 lg:text-7xl md:text-5xl text-4xl">
-            <LinkP name="GITHUB" link="https://github.com/Acodehacked" />
-            <LinkP name="INSTAGRAM" link="https://instagram.com/abin_antny" />
-            <LinkP name="LINKEDIN" link="https://www.linkedin.com/in/abin-antony-3a9a21314/" />
+      {/* Hero Section */}
+      <section className="px-6 overflow-hidden max-h-screen h-screen lg:px-12 py-20 relative">
+        <div className="max-w-6xl mx-auto relative z-[2]">
+          <h1 className="text-4xl md:text-6xl  lg:text-7xl font-bold leading-tight font-poppins tracking-wide text-center">
+            CREATING INTUITIVE
+            <br />
+            AND ENGAGING
+            <br />
+            <span className="text-[#00FF47]">DIGITAL PRODUCTS</span>
+          </h1>
+          <p className="text-[#BFBFBF] text-lg text-center mt-6 max-w-2xl mx-auto">
+            Hi, I'm Abin Antony, a Kerala-based full-stack developer and
+            entrepreneur specialized in modern web technologies, UI/UX design,
+            and software solutions. Currently pursuing BTech at SJCET PALAI with
+            4+ years experience in UI Designing and Web development.
+          </p>
+          <div className="flex justify-center flex-wrap gap-4 mt-8">
+            <Link
+              href="mailto:abina5448@gmail.com"
+              className="bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-[#E0E0E0] transition-colors"
+            >
+              Get In Touch
+            </Link>
+            <Link
+              href="https://github.com/Acodehacked"
+              className="border border-[#333333] px-6 py-3 rounded-full font-medium hover:border-[#00FF47] hover:text-[#00FF47] transition-all"
+            >
+              View GitHub
+            </Link>
           </div>
         </div>
-        <div className="absolute top-0 left-0  z-[1] h-full w-full">
-          {/* <FlickeringGrid
-            className="relative opacity-50 inset-0 z-0 [mask-image:radial-gradient(600px_circle_at_center,white,transparent)]"
-            squareSize={4}
-            gridGap={6}
-            color="#ac7ed7"
-            maxOpacity={0.5}
-            flickerChance={0.1}
-            height={1700}
-            width={1900}
-          /> */}
+        <iframe
+          className="aspect-[16/9] md:translate-y-[200px] translate-y-[300px] scale-[1.5] w-full absolute right-0 top-0 h-full z-[1]"
+          src="https://my.spline.design/cardsgear-Nnk6sc2uR4qgUaY67tba7XQ9/"
+          width="100%"
+          height="100%"
+        ></iframe>
+      </section>
 
+      {/* Featured Projects */}
+      <section className="px-6 lg:px-12 py-16" id="work">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 font-poppins">
+          FEATURED <span className="text-[#00FF47]">PROJECTS</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {EVENTS.slice(0, 6).map((project, index) => (
+            <Link href={`/projects/${project.title.replaceAll(' ', '-')}/`} key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-[#111111] rounded-xl border border-[#222222] overflow-hidden hover:border-[#00FF47] transition-all duration-300 hover:shadow-[0px_6px_18px_rgba(0,0,0,0.35)] group"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <Image
+                    src={`/${project.image}`}
+                    alt={project.title}
+                    width={400}
+                    height={250}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-[#BFBFBF] text-sm mb-3">
+                    {project.subtitle}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.category.slice(0, 2).map((cat, i) => (
+                      <span
+                        key={i}
+                        className="text-xs px-2 py-1 bg-[#222222] rounded-full text-[#00FF47]"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    className="text-[#00FF47] hover:text-white transition-colors flex items-center gap-2 text-sm"
+                  >
+                    View Project <ExternalLink size={14} />
+                  </Link>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      <main className="">
-        <VelocityScroll
-          text="ABIN ANTONY - WEB | APP DEVELOPER / DESIGNER"
-          default_velocity={1}
-          className="text-center text-[100px] mb-20 font-regular tracking-[-0.04em] leading-[60px] text-white/5 font-semibold mt-10"
-        />
-        <Projects />
+      {/* About Section */}
+      <section className="px-6 lg:px-12 py-16" id="about">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">
+              I DESIGN EXCEPTIONAL
+              <br />
+              <span className="text-[#00FF47]">DIGITAL EXPERIENCES</span>
+            </h2>
+            <p className="text-[#BFBFBF] mb-6 leading-relaxed">
+              With 4+ years of experience in UI Designing and Web development, I
+              work for domestic and foreign clients. Currently working at{" "}
+              <Link
+                href="https://webcodecreators.com"
+                target="_blank"
+                className="text-[#00FF47] hover:underline"
+              >
+                WebcodeCreators
+              </Link>{" "}
+              as Full Stack Developer.
+            </p>
+            <p className="text-[#BFBFBF] mb-6 leading-relaxed">
+              I like to describe myself as a designer/developer with high
+              discipline and enjoy working in a team or independently.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <div className="w-2 h-2 bg-[#00FF47] rounded-full"></div>
+                <span className="text-[#E0E0E0]">Full Stack Development</span>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-2 h-2 bg-[#00FF47] rounded-full"></div>
+                <span className="text-[#E0E0E0]">UI/UX Design</span>
+              </div>
+              <div className="flex items-center space-x-4">
+                <div className="w-2 h-2 bg-[#00FF47] rounded-full"></div>
+                <span className="text-[#E0E0E0]">Cloud Solutions</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+              <Link
+                href="https://github.com/Acodehacked"
+                target="_blank"
+                className="border border-[#333333] px-4 py-2 rounded-full text-center hover:border-[#00FF47] hover:text-[#00FF47] transition-all"
+              >
+                GITHUB
+              </Link>
+              <Link
+                href="https://instagram.com/abin_antny"
+                target="_blank"
+                className="border border-[#333333] px-4 py-2 rounded-full text-center hover:border-[#00FF47] hover:text-[#00FF47] transition-all"
+              >
+                INSTAGRAM
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/abin-antony-3a9a21314/"
+                target="_blank"
+                className="border border-[#333333] px-4 py-2 rounded-full text-center hover:border-[#00FF47] hover:text-[#00FF47] transition-all"
+              >
+                LINKEDIN
+              </Link>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="w-80 h-80 bg-[#111111] rounded-xl border border-[#222222] overflow-hidden">
+              <Image
+                src="/imageabin.png"
+                alt="Abin Antony"
+                width={320}
+                height={320}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Section */}
+      <section className="px-6 lg:px-12 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center font-poppins">
+          TECHNOLOGY <span className="text-[#00FF47]">STACK</span>
+        </h2>
         <TechStack />
-        <section className="p-10 w-full">
-          <h2 className="md:text-7xl text-5xl font-medium mb-10 mt-0 p-0">Showcase <span className='text-green-500 font-p text-8xl p-0 m-0 leading-[20px]'>.</span></h2>
-          <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
-            {showcase.map((item, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, stiffness: 40 }}>
-                <MagneticImage src={item.image} alt="alt" className="w-full rounded-2xl" width={500} height={300} />
+      </section>
+
+      {/* Achievements Section */}
+      <section className="px-6 lg:px-12 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 font-poppins">
+          ACHIEVEMENTS & <span className="text-[#00FF47]">CERTIFICATIONS</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-[#111111] rounded-xl border border-[#222222] p-6 hover:border-[#00FF47] transition-all duration-300 hover:shadow-[0px_6px_18px_rgba(0,0,0,0.35)]">
+            <div className="text-[#00FF47] text-2xl font-bold mb-2">2020</div>
+            <h3 className="text-xl font-semibold mb-3">
+              Certified Full Stack JAVA Developer
+            </h3>
+            <p className="text-[#BFBFBF]">
+              Advanced certification in Java full-stack development with
+              enterprise-grade applications.
+            </p>
+          </div>
+          <div className="bg-[#111111] rounded-xl border border-[#222222] p-6 hover:border-[#00FF47] transition-all duration-300 hover:shadow-[0px_6px_18px_rgba(0,0,0,0.35)]">
+            <div className="text-[#00FF47] text-2xl font-bold mb-2">2020</div>
+            <h3 className="text-xl font-semibold mb-3">
+              DSA Assessment Certification
+            </h3>
+            <p className="text-[#BFBFBF]">
+              Certification in Data Structures and Algorithms Assessment with A+
+              grade.
+            </p>
+          </div>
+          <div className="bg-[#111111] rounded-xl border border-[#222222] p-6 hover:border-[#00FF47] transition-all duration-300 hover:shadow-[0px_6px_18px_rgba(0,0,0,0.35)]">
+            <div className="text-[#00FF47] text-2xl font-bold mb-2">2024</div>
+            <h3 className="text-xl font-semibold mb-3">
+              Founder of WebcodeCreators
+            </h3>
+            <p className="text-[#BFBFBF]">
+              Established a successful web development company providing
+              innovative digital solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Showcase Section */}
+      <section className="px-6 lg:px-12 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-12 font-poppins">
+          DESIGN <span className="text-[#00FF47]">SHOWCASE</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {showcase.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="aspect-video rounded-xl overflow-hidden hover:scale-105 transition-transform duration-300"
+            >
+              <Image
+                src={item.image}
+                alt={`Showcase ${index + 1}`}
+                width={400}
+                height={300}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="px-6 lg:px-12 py-20" id="contact">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="text-center lg:text-left">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">
+              <span className="text-[#00FF47]">CONNECT</span>
+              <br />
+              WITH ME
+            </h2>
+            <p className="text-[#BFBFBF] text-lg mb-8 max-w-2xl">
+              I am open to collaborations and freelance projects. Let's build
+              something amazing together!
+            </p>
+            <div className="space-y-4">
+              <p className="text-[#E0E0E0]">
+                📧{" "}
+                <Link
+                  href="mailto:abina5448@gmail.com"
+                  className="text-[#00FF47] hover:underline"
+                >
+                  abina5448@gmail.com
+                </Link>
+              </p>
+              <p className="text-[#E0E0E0]">
+                📱{" "}
+                <Link
+                  href="https://wa.me/+919048741910"
+                  className="text-[#00FF47] hover:underline"
+                >
+                  +91 9048741910
+                </Link>
+              </p>
+              <p className="text-[#E0E0E0]">
+                🎓 Currently Pursuing BTech at{" "}
+                <Link
+                  href="https://sjcetpalai.ac.in"
+                  target="_blank"
+                  className="text-[#00FF47] hover:underline"
+                >
+                  SJCET PALAI
+                </Link>
+              </p>
+            </div>
+            <Link
+              href="https://wa.me/+919048741910"
+              target="_blank"
+              className="inline-block mt-8 bg-white text-black px-8 py-3 rounded-full text-lg font-medium hover:bg-[#E0E0E0] transition-colors"
+            >
+              Contact Me
+            </Link>
+          </div>
+          <ContactForm />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-[#222222] px-6 lg:px-12 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="text-[#BFBFBF] mb-4 md:mb-0">
+            © 2025 Abin Antony Kattady. All rights reserved.
+          </div>
+          <div className="flex space-x-6">
+            <Link
+              href="https://www.linkedin.com/in/abin-antony-3a9a21314/"
+              target="_blank"
+              className="text-[#BFBFBF] hover:text-white transition-colors"
+            >
+              LinkedIn
+            </Link>
+            <Link
+              href="https://github.com/Acodehacked"
+              target="_blank"
+              className="text-[#BFBFBF] hover:text-white transition-colors"
+            >
+              GitHub
+            </Link>
+            <Link
+              href="https://instagram.com/abin_antny"
+              target="_blank"
+              className="text-[#BFBFBF] hover:text-white transition-colors"
+            >
+              Instagram
+            </Link>
+          </div>
+        </div>
+        <div className="relative min-h-[200px] mt-16">
+          <p className="text-6xl md:text-[200px] absolute bottom-0 right-0 text-center z-[1] left-0 text-white/10 font-bold">
+            abinantony.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// Tech Stack Component
+function TechStack() {
+  const categories = {
+    "Frontend & Frameworks": [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "Angular",
+      "Flutter",
+      "React Native",
+      "TailwindCSS",
+      "Bootstrap",
+      "MUI",
+      "Chakra UI",
+      "ShadCN",
+      "Three.js",
+      "Framer Motion",
+    ],
+    "Backend & Databases": [
+      "Node.js",
+      "Express.js",
+      "Django",
+      "FastAPI",
+      "Laravel",
+      "Spring",
+      "GraphQL",
+      "tRPC",
+      "MongoDB",
+      "PostgreSQL",
+      "MySQL",
+      "Firebase",
+      "Supabase",
+    ],
+    "Cloud & DevOps": [
+      "AWS",
+      "Google Cloud",
+      "DigitalOcean",
+      "Cloudflare",
+      "Vercel",
+      "Docker",
+      "Git",
+      "GitHub Actions",
+      "GitLab CI",
+    ],
+    Languages: [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Java",
+      "C++",
+      "C#",
+      "PHP",
+      "Dart",
+      "Kotlin",
+      "GDScript",
+    ],
+    "Design & Creative": [
+      "Figma",
+      "Adobe XD",
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Adobe After Effects",
+      "Blender",
+      "Canva",
+    ],
+  };
+
+  return (
+    <div className="space-y-8">
+      {Object.entries(categories).map(([category, items], index) => (
+        <div key={index}>
+          <h3 className="text-lg mb-4 text-[#00FF47] uppercase tracking-wider font-semibold font-poppins">
+            {category}
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {items.map((item, i) => (
+              <motion.div
+                key={i}
+                className="px-4 py-2 rounded-full border border-[#333333] text-white text-sm font-medium backdrop-blur-sm bg-[#111111] hover:border-[#00FF47] hover:text-[#00FF47] transition-all"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.05 }}
+                viewport={{ once: true }}
+              >
+                {item}
               </motion.div>
             ))}
           </div>
-        </section>
-        <Achievements />
-        <section className="relative md:min-h-[400px] min-h-[120vh] ">
-
-          <TextReveal className="font-p md:text-3xl lg:text-4xl xl:text-5xl md:leading-[90px]  leading-normal sm:leading-[50px] md:tracking-tight tracking-tighter">
-            I’m Abin Antony, a passionate full-stack web developer and technology enthusiast. With a strong foundation in coding, UI/UX design, and cloud solutions, I create dynamic, efficient, and innovative applications. Whether it's building scalable web platforms, designing engaging user interfaces, or solving complex development challenges, I’m always excited to bring ideas to life. Let’s collaborate and build something incredible together!
-
-          </TextReveal>
-        </section>
-        <Contact />
-        <footer className="flex md:flex-row flex-col  justify-between px-20 md:mb-20 mb-[200px] p-4 font-light font-p text-white/70 normal-case w-full items-center">
-          <p className="me-3">Abin Antony Kattady</p>
-          <p>2025 @ all rights reserved </p>
-        </footer>
-        <div className="relative min-h-[200px]">
-          <p className="font-p  md:text-[200px] sm:text-[150px] text-[50px] absolute bottom-0 right-0 text-center z-[1] left-0 normal-case text-white/10">abinantony.</p>
-          <Image src="/imageabin.png" className="absolute z-[0] sm:opacity-100 opacity-0 left-[50%] right-0 bottom-0 translate-x-[-50%] brightness-75" style={{ opacity: 1 }} alt="alt" width={400} height={300} />
         </div>
-      </main>
+      ))}
     </div>
   );
 }
 
-// MagneticImage: makes images subtly follow the cursor (magnetic effect)
-function MagneticImage({ src, alt, width, height, className }: { src: string; alt?: string; width?: number; height?: number; className?: string }) {
-  const wrapRef = React.useRef<HTMLDivElement | null>(null);
-  const imgRef = React.useRef<HTMLElement | null>(null);
-
-  React.useEffect(() => {
-    // Skip magnetic behaviour on touch devices (hover-only)
-    if (typeof window !== 'undefined' && 'ontouchstart' in window) return;
-
-    const wrap = wrapRef.current;
-    if (!wrap) return;
-
-    // Next/Image renders an <img> inside the wrapper; prefer animating the <img>,
-    // but fall back to animating the wrapper itself if not available.
-    const foundImg = wrap.querySelector('img');
-    imgRef.current = (foundImg as HTMLElement) || wrap;
-
-    if (imgRef.current) {
-      imgRef.current.style.willChange = 'transform';
-      imgRef.current.style.transformOrigin = 'center center';
-      // ensure 3D transforms render correctly
-      (wrap as HTMLElement).style.transformStyle = 'preserve-3d';
-    }
-  }, []);
-
-  const getTarget = () => imgRef.current || wrapRef.current;
-
-  const onMove = (e: React.MouseEvent) => {
-    const wrap = wrapRef.current;
-    const target = getTarget();
-    if (!wrap || !target) return;
-
-    const rect = wrap.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const dx = (x - cx) / cx; // -1 .. 1
-    const dy = (y - cy) / cy; // -1 .. 1
-
-    const strength = Math.min(24, rect.width * 0.05); // scale with size
-    const tx = dx * strength;
-    const ty = dy * strength * 0.6;
-    const rotateX = dy * 6; // degrees
-    const rotateY = -dx * 6;
-
-    // kill any previous tweens on this target to avoid buildup
-    gsap.killTweensOf(target);
-    gsap.to(target as HTMLElement, {
-      x: tx,
-      y: ty,
-      rotateX,
-      rotateY,
-      scale: 1.02,
-      transformPerspective: 800,
-      duration: 0.35,
-      ease: 'power3.out',
-    });
-  };
-
-  const onEnter = () => {
-    const target = getTarget();
-    if (!target) return;
-    gsap.killTweensOf(target);
-    gsap.to(target as HTMLElement, { scale: 1.03, duration: 0.25, ease: 'power3.out' });
-  };
-
-  const onLeave = () => {
-    const target = getTarget();
-    if (!target) return;
-    gsap.killTweensOf(target);
-    gsap.to(target as HTMLElement, { x: 0, y: 0, rotateX: 0, rotateY: 0, scale: 1, duration: 0.45, ease: 'power3.out' });
-  };
-
-  return (
-    <div
-      ref={wrapRef}
-      onMouseMove={onMove}
-      onMouseEnter={onEnter}
-      onMouseLeave={onLeave}
-      className={`w-full rounded-2xl ${className || ''}`}
-      style={{ perspective: 900 }}
-    >
-      <Image src={src} alt={alt || 'image'} width={width || 500} height={height || 300} className="w-full block rounded-xl" />
-    </div>
-  );
-}
-
-// components/Header.js
-
-
-const LinkP = ({ name, link }: { name: string, link: string }) => {
-  return (
-    <Link href={link} className="border relative group overflow-hidden flex justify-center px-3 py-4 rounded-full font-normal  border-white/40 text-white/60 hover:text-white">
-      <span className="md:group-hover:scale-[0.9] transition-all group-hover:opacity-10">{name}</span>
-      <ExternalLink size={50} className="absolute top-full transition-all md:group-hover:top-[25%] group-hover:top-[20%]" />
-    </Link >
-  )
-}
-
-// components/About.js
-function About() {
-
-  return (
-    <section className="p-3 text-center border-w pb-10 font-p flex flex-col">
-      <p className=" text-gray-100 tracking-tight lg:text-4xl md:text-2xl text-3xl font-medium">Hi, I'm a Kerala Based full-stack developer and entrepreneur. </p>
-      <p className="lg:text-3xl sm:tracking-tighter md:text-2xl text-md tracking-normal text-gray-500">specialized in modern web technologies, UI/UX design, and software solutions. Passionate about coding, learning, and building innovative projects.</p>
-      <p className="border border-white/30 mx-auto w-auto px-3 py-1 rounded-2xl text-zinc-200 mt-3">Currently Pursuing Btech at <Link className="underline underline-offset-2" href={'https://sjcetpalai.ac.in'}>SJCET PALAI</Link></p>
-    </section>
-  );
-}
-
-// components/Projects.js
-function Projects() {
-  return (
-    <section className="p-10 w-full">
-      <h2 className="md:text-7xl text-5xl font-medium mb-10">Featured Projects</h2>
-      {/* <Carousel /> */}
-      <div className="grid sm:grid-cols-3 grid-cols-1 gap-[10px_40px]">
-        {EVENTS.map((item, index) => (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.5,
-                delay: index % 2 === 0 ? 0.2 : 0.4,
-                ease: "easeOut",
-              },
-            }}
-            viewport={{ once: true }}
-            key={"card" + index}
-            className="last:pr-[5%] rounded-3xl overflow-visible"
-          >
-            <Link href={`/projects/${item.title.replaceAll(' ', '-')}/`}>
-              <div className="relative group rounded-xl overflow-visible">
-                {/* Glow Border Wrapper */}
-                <div className="absolute -inset-1 rounded-[inherit] z-0 transition-all duration-500 scale-100 opacity-0 group-hover:scale-105 group-hover:opacity-50 pointer-events-none">
-                  <div className="w-full h-full rounded-[inherit] blur-2xl bg-[conic-gradient(from_0deg,_#00c6ff,_#5f00ff,_#ff4ecd,_#ffc300,_#00c6ff)]" />
-                </div>
-
-                {/* Image Layer */}
-                <div className="relative z-10 overflow-hidden rounded-xl">
-                  <Image
-                    src={`/${item.image}`}
-                    alt="alt"
-                    width={600}
-                    height={300}
-                    className="w-full rounded-xl transition-all duration-1000 ease-in-out group-hover:scale-105"
-                  />
-                </div>
-              </div>
-              <div className="p-2">
-                <h1 className="normal-case font-p text-2xl">⚡{item.title}</h1>
-                <p className="normal-case font-p font-light">{item.subtitle}</p>
-                <div className="flex gap-2 mt-2 flex-wrap">
-                  {item.category.map((i, index) => (
-                    <div
-                      className="text-sm tracking-wide text-white/40 px-2 py-1 rounded-full border border-white/40"
-                      key={index}
-                    >
-                      {i}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-
-      </div>
-    </section>
-  );
-}
-
-
-const MainCard = ({ title, subtitle, link, cards, isCase = true, year }: { title: string, subtitle: string, link?: string, cards?: string[], isCase?: boolean, year?: number }) => {
-  return (
-    <div className="bg-white relative overflow-hidden p-6 rounded-lg shadow-lg pt-10">
-      {cards && <div className="flex gap-2 flex-wrap mb-3">
-        {cards.map((item, index) => {
-          return <div className="text-black px-4 py-2 border rounded-3xl" key={index}>{item}</div>
-        })}
-      </div>}
-      <h3 className="md:text-4xl text-2xl font-medium relative z-[1] text-black">{title}</h3>
-      <p className="text-gray-400 mt-2 relative z-[1] normal-case">{subtitle}</p>
-      {isCase && <Link href={"#"} className="hover:underline text-black flex items-center mt-2">Case study <ExternalLink size={18} /></Link>
-      }
-      {year && <p className="text-zinc-200 absolute font-p md:text-8xl text-6xl bottom-[-10px] right-0">{year}</p>}
-    </div>
-  )
-}
-
-// components/Achievements.js
-function Achievements() {
-  return (
-    <section className="p-10 w-full">
-      <h2 className="md:text-7xl sm:text-4xl text-3xl font-medium mb-10">Achievements</h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <MainCard
-          isCase={false}
-          year={2020}
-          title="Certified Full Stack JAVA Developer"
-          subtitle="A web app for managing construction projects efficiently." />
-        <MainCard
-          isCase={false}
-          year={2020}
-          title="Certification in DSA Assement"
-          subtitle="Certification in Data Structure and alogorithms Assement A+" />
-        <MainCard
-          isCase={false}
-          year={2024}
-          title="Founder of Webcodecreators"
-          subtitle="An analytics dashboard for advertisement publishers." />
-      </div>
-    </section>
-  );
-}
-
-// components/Contact.js
-function Contact() {
+// Contact Form Component
+function ContactForm() {
   const [result, setResult] = React.useState("");
 
-  interface FormSubmitEvent extends React.FormEvent<HTMLFormElement> { }
-
-  interface Web3FormsResponse {
-    success: boolean;
-    message: string;
-  }
-
-  const onSubmit = async (event: FormSubmitEvent): Promise<void> => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setResult("Sending....");
     const formData = new FormData(event.target as HTMLFormElement);
-
     formData.append("access_key", "da624d25-1a62-4f68-8a3a-e010e5f8962b");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
-
-    const data: Web3FormsResponse = await response.json();
-
-    if (data.success) {
-      setResult("Form Submitted Successfully");
-      (event.target as HTMLFormElement).reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setResult("Message sent successfully!");
+        (event.target as HTMLFormElement).reset();
+      } else {
+        setResult(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      setResult("Failed to send message");
     }
   };
-  return (
-    <section className="p-10 mt-5 border-t border-white/40 text-center font-p flex md:flex-row flex-col gap-10 w-full">
-      <div className="flex flex-col w-full items-center justify-center">
-        <h2 className="text-4xl font-medium mb-4 normal-case">Get in Touch</h2>
-        <p className="text-lg text-gray-300 normal-case">I am open to collaborations and freelance projects. Let's build something amazing together!</p>
-        <Link href={'https://wa.me/+919048741910'} className="mt-6 px-6 py-3  text-white border border-white rounded-full text-lg font-semibold   hover:bg-white/10 transition-all">Contact Me</Link>
-
-      </div>
-      <div className="flex flex-col w-full  mx-auto">
-        <form onSubmit={onSubmit} className="flex max-w-[400px] mx-auto w-full flex-col gap-2">
-          <h2 className="text-4xl font-medium mb-4 normal-case">Connect With Me.</h2>
-          <Input type="text" placeholder="Enter your name" name="name" required />
-          <Input type="email" placeholder="Enter your Email " name="email" required />
-          <Textarea name="message" placeholder="Enter your message" required></Textarea>
-          <button className="flex bg-white text-black justify-center px-4 py-2 rounded-xl items-center gap-2" type="submit">Send <Send /></button>
-        </form>
-        <span className="mt-4">{result}</span>
-      </div>
-    </section>
-  );
-}
-
-function TechStack() {
-  const categories = {
-    "Tech Stacks": [
-      "C", "C#", "C++", "CSS3", "Dart", "GraphQL", "HTML5", "Java", "JavaScript", "Kotlin", "PHP", "PowerShell", "Python", "TypeScript",
-      "AWS", "Cloudflare", "Firebase", "Supabase", "DigitalOcean", "Google Cloud", "Oracle", "Vercel",
-      "Angular", "Angular.js", ".Net", "Apollo-GraphQL", "Bootstrap", "Chart.js", "Chakra", "Context-API", "Django", "Express.js", "Flutter", "FastAPI", "Ionic", "jQuery", "Laravel", "MUI", "Metero JS", "Next JS", "NPM", "NodeJS", "Radix UI", "React Native", "React", "React Query", "Spring", "SolidJS", "TailwindCSS", "Three.js", "Vite", "Vue.js", "WordPress", "Zod"
-    ],
-    "UI Design Tools": [
-      "Adobe XD", "Figma", "Framer", "Canva", "Dribbble", "Adobe Fonts"
-    ],
-    "Video Editing": [
-      "Adobe Premiere Pro", "Adobe After Effects", "Blender"
-    ],
-    "Tools": [
-      "Apache-Nginx", "AmazonDynamoDB", "Firebase", "MongoDB", "MySQL", "Neo4J", "Postgres", "SQLite", "Drizzle", "Hibernate",
-      "Adobe Illustrator", "Adobe Lightroom", "Adobe Photoshop", "Inkscape", "Krita",
-      "PyTorch", "OpenCV",
-      "GitHub Actions", "GitLab CI", "Git", "GitLab", "GitHub", "Arduino", "Docker", "ESLint"
-    ]
-  };
-
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section className="p-10 ">
-      <h2 className="text-4xl font-bold text-center mb-10 text-white tracking-wide">My Technology Stack</h2>
-      <div className="space-y-12 max-w-7xl mx-auto" ref={ref}>
-        {Object.entries(categories).map(([category, items], index) => (
-          <div key={index}>
-            <h3 className="text-2xl mb-4 text-white/40 uppercase tracking-wider">{category}</h3>
-            <div className="flex flex-wrap gap-3">
-              {items.map((item, i) => (
-                <motion.div
-                  key={i}
-                  className="px-4 py-2 rounded-full border border-white/20 text-white text-sm font-medium backdrop-blur-sm bg-white/5 shadow-inner neon-border"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.015 }}
-                >
-                  {item}
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="bg-[#111111] rounded-xl border border-[#222222] p-8">
+      <h3 className="text-2xl font-bold mb-6 font-poppins">
+        Send Me a Message
+      </h3>
+      <form onSubmit={onSubmit} className="space-y-4">
+        <div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            className="w-full px-4 py-3 bg-[#0C0C0C] border border-[#333333] rounded-lg text-white placeholder-[#666] focus:border-[#00FF47] focus:outline-none"
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required
+            className="w-full px-4 py-3 bg-[#0C0C0C] border border-[#333333] rounded-lg text-white placeholder-[#666] focus:border-[#00FF47] focus:outline-none"
+          />
+        </div>
+        <div>
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows={5}
+            required
+            className="w-full px-4 py-3 bg-[#0C0C0C] border border-[#333333] rounded-lg text-white placeholder-[#666] focus:border-[#00FF47] focus:outline-none resize-none"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-white text-black px-6 py-3 rounded-lg font-medium hover:bg-[#E0E0E0] transition-colors flex items-center justify-center gap-2"
+        >
+          Send Message <Send size={18} />
+        </button>
+        {result && (
+          <p
+            className={`text-center ${
+              result.includes("successfully")
+                ? "text-[#00FF47]"
+                : "text-red-400"
+            }`}
+          >
+            {result}
+          </p>
+        )}
+      </form>
+    </div>
   );
 }

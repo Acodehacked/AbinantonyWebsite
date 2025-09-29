@@ -18,6 +18,10 @@ const config = {
   		}
   	},
   	extend: {
+  		fontFamily: {
+  			'poppins': ['var(--font-poppins)', 'sans-serif'],
+  			'lato': ['var(--font-lato)', 'sans-serif'],
+  		},
   		animation: {
   			meteor: 'meteor 5s linear infinite',
   			orbit: 'orbit calc(var(--duration)*1s) linear infinite',

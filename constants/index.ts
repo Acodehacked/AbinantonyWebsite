@@ -2,6 +2,28 @@ import { link } from "fs";
 
 export const EVENTS = [
     {
+        "title": "MediLink Healthcare Platform",
+        "subtitle": "Secure, Smart & Connected Healthcare",
+        "category": ["Healthcare", "UI/UX Design", "AI & Machine Learning", "Data Security"],
+        "image": "m21.jpg",
+        "link": "https://imedlink.in",
+        "description": "MediLink is a privacy-first healthcare companion that bridges the gap between doctors and patients. It ensures secure communication, verified medicine intake, and AI-powered treatment adherence, empowering patients with confidence while providing doctors with accurate real-time insights.",
+        "aim": "To create a secure and intelligent healthcare ecosystem where patients can manage their medical journey confidently and doctors can deliver effective care through accurate, verified, and timely data.",
+        "challenges": "The main challenge was designing a system that balances strong security with user accessibility. Implementing AES-256 encryption, OTP-based record access, and ML-powered adherence prediction required careful integration without overcomplicating the user experience.",
+        "project_goals": "Build a transparent, trust-driven healthcare platform that enhances treatment adherence, ensures patient data sovereignty, and provides doctors with reliable real-time insights for improved decision-making.",
+        "tech_stack": ["Next.js", "Tailwind CSS", "tRPC", "PostgreSQL", "TensorFlow", "PyTorch"],
+        "key_features": [
+            "AES-256 encrypted medical data storage and exchange",
+            "OTP-based controlled access for patient records",
+            "Medicine intake verification with photo-based logging",
+            "Smart reminders for prescriptions and follow-ups",
+            "AI-powered adherence risk prediction and personalized care suggestions",
+            "Self-hosted deployment options for hospitals and users"
+        ],
+        "lessons_learned": "Building in healthcare demands strict attention to privacy, trust, and accessibility. This project reinforced the importance of role-based ecosystems, transparent data ownership, and AI-driven personalization for creating meaningful patient-doctor relationships."
+    }
+    ,
+    {
         "title": "DailyTaste E commerce Website",
         "subtitle": "Taste the Purity — A Modern Digital Storefront",
         "category": ["E-commerce", "UI/UX Design", "Food & Beverages"],

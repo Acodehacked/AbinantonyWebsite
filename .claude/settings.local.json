@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "WebFetch(domain:cdn.dribbble.com)",
+      "Bash(curl -s \"https://cdn.dribbble.com/userupload/17557017/file/original-af76181bf05245eff36e1687b4e666d4.png?resize=1504x1128&vertical=center\" -o temp_design.png)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

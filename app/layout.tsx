@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Lato, Nunito, Orbitron, Poppins, Raleway, Truculenta } from "next/font/google";
+import { Abel, Anton, Inter, Lato, Nunito, Orbitron, Poppins, Raleway, Truculenta } from "next/font/google";
 import "@/app/globals.css";
 
-// const inter = Raleway({ weight: ['100','200','300','400','500','600','700','800','900'], subsets: ["latin"] });
-const inter = Lato({ weight: "400", subsets: ["latin"] });
+const anton = Abel({
+  weight: ['400'],
+  subsets: ["latin"],
+  variable: '--font-lato'
+});
 
 
 export const metadata: Metadata = {
@@ -17,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={` ${inter.className} dark bg-[#121212]`}>
+    <html lang="en" className="tracking-wider">
+      <body className={`${anton.className} tracking-wider dark bg-[#121212]`}>
         {children}
       </body>
     </html>
