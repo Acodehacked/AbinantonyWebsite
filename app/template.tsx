@@ -4,75 +4,56 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
 
-const word = "Abinantony.";
-
 export default function Template({ children }: { children: React.ReactNode }) {
-  const textRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const progressRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const counterRef = useRef<HTMLSpanElement | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
     const overlay = overlayRef.current;
-    const textEl = textRef.current;
-    if (!overlay || !textEl) return;
+    const progress = progressRef.current;
+    const text = textRef.current;
+    const counter = counterRef.current;
 
+    if (!overlay || !progress || !text || !counter) return;
+
+    // Reset initial state
     gsap.set(overlay, { autoAlpha: 1 });
+    gsap.set(progress, { scaleX: 0, transformOrigin: "left" });
+    gsap.set(text, { opacity: 0, y: 30 });
+    counter.innerText = "0%";
 
-    const letters = Array.from(
-      textEl.querySelectorAll(".letter")
-    ) as HTMLElement[];
+    const tl = gsap.timeline();
 
-    letters.forEach((el, i) => {
-      const finalChar = el.dataset.char || "";
-      const allChars =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.".split(
-          ""
-        );
+    // Text Reveal
+    tl.to(text, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    });
 
-      // strip container
-      const strip = document.createElement("div");
-      strip.style.display = "block";
-      strip.style.willChange = "transform";
-      strip.style.lineHeight = "1em";
-
-      // fill with random chars
-      for (let j = 0; j < 15; j++) {
-        const rand = allChars[Math.floor(Math.random() * allChars.length)];
-        const span = document.createElement("div");
-        span.textContent = rand;
-        strip.appendChild(span);
+    // Progress Animation
+    tl.to(progress, {
+      scaleX: 1,
+      duration: 1.5,
+      ease: "expo.inOut",
+      onUpdate: function () {
+        const progressVal = Math.round(this.progress() * 100);
+        counter.innerText = `${progressVal}%`;
       }
+    }, "-=0.6");
 
-      // final char
-      const finalSpan = document.createElement("div");
-      finalSpan.textContent = finalChar;
-      strip.appendChild(finalSpan);
-
-      el.innerHTML = "";
-      el.appendChild(strip);
-
-      const charHeight = el.offsetHeight; // height of one character
-      const totalHeight = strip.children.length * charHeight;
-
-      // slot machine animation
-      gsap.fromTo(
-        strip,
-        { y: 0 },
-        {
-          y: -totalHeight + charHeight,
-          duration: 1.4 + i * 0.12,
-          ease: "power4.out",
-        }
-      );
+    // Exit Animation
+    tl.to(overlay, {
+      yPercent: -100,
+      duration: 0.8,
+      ease: "power4.inOut",
+      delay: 0.1
     });
 
-    // fade out after animation
-    gsap.to(overlay, {
-      autoAlpha: 0,
-      duration: 0.7,
-      delay: 2.0,
-      ease: "power2.out",
-    });
   }, [pathname]);
 
   return (
@@ -83,21 +64,26 @@ export default function Template({ children }: { children: React.ReactNode }) {
       {/* Transition overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 flex items-center justify-center bg-[#0b0b0c] z-[9999]"
+        className="fixed inset-0 flex flex-col items-center justify-center bg-[#0b0b0c] z-[9999] text-white"
       >
-        <div
-          ref={textRef}
-          className="text-white text-3xl md:text-5xl font-bold tracking-tight select-none flex space-x-1"
-        >
-          {word.split("").map((ch, i) => (
-            <span
-              key={i}
-              className="letter inline-block overflow-hidden h-[1em] w-[1.3ch] text-center"
-              data-char={ch}
-            >
-              {ch}
-            </span>
-          ))}
+        {/* Centered Text */}
+        <div ref={textRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">Abinantony.</h1>
+        </div>
+
+        {/* Bottom Right Counter */}
+        <div className="absolute bottom-10 right-10 md:bottom-20 md:right-20 overflow-hidden">
+          <span
+            ref={counterRef}
+            className="block text-6xl md:text-9xl font-bold tracking-tighter text-neutral-800"
+          >
+            0%
+          </span>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="absolute bottom-0 left-0 w-full h-1 bg-white/5">
+          <div ref={progressRef} className="h-full w-full bg-white" />
         </div>
       </div>
     </div>

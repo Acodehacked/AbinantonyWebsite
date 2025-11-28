@@ -79,7 +79,7 @@
   }
 
   body {
-    @apply bg-background text-foreground uppercase tracking-tight;
+    @apply bg-background text-foreground tracking-tight;
   }
 
   .border-w {

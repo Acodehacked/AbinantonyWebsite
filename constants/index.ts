@@ -1,6 +1,20 @@
-import { link } from "fs";
+
 
 export const EVENTS = [
+    {
+        title: "Bibliya App - vachanavayal",
+        subtitle: "A Unique Way to Study the Bible",
+        category: ["Web Application", "Education"],
+        image: 'm11.png',
+        link: 'https://bibliya.in',
+        description: "Developed Bibliya, a web application that allows users to study the Bible through interactive quizzes.",
+        aim: "To make Bible study engaging and interactive.",
+        challenges: "Creating an engaging learning experience with gamified quizzes and tracking user progress.",
+        project_goals: "Develop an interactive Bible study tool with quizzes and progress tracking.",
+        tech_stack: ["AWS", "Cloudflare", "S3", "Hostinger", "Next.js", "React", "PHP"],
+        key_features: ["Interactive quizzes", "User progress tracking", "Cloud storage"],
+        lessons_learned: "The effectiveness of gamification in educational applications."
+    },
     {
         "title": "MediLink Healthcare Platform",
         "subtitle": "Secure, Smart & Connected Healthcare",
@@ -69,7 +83,7 @@ export const EVENTS = [
         category: ["Web Development", "UI/UX Design"],
         image: 'm1.png',
         link: 'https://iedc-sjcet.github.io',
-        description: "Redesigned the official SJCET Bootcamp website using Next.js and Figma to create a seamless, modern, and responsive experience.",
+        description: "The official SJCET Bootcamp website using Next.js and Figma to create a seamless, modern, and responsive experience.",
         aim: "To enhance user experience by improving navigation, accessibility, and aesthetics, ensuring students and faculty can easily access resources.",
         challenges: "Ensuring seamless integration of legacy content while modernizing UI/UX, optimizing load times, and maintaining accessibility standards.",
         project_goals: "Create a user-friendly platform that facilitates easy access to bootcamp materials and updates.",
@@ -202,20 +216,7 @@ export const EVENTS = [
         key_features: ["Drag-and-drop interface", "AI-powered suggestions", "Cloud hosting support"],
         lessons_learned: "Balancing customization with simplicity in no-code platforms."
     },
-    {
-        title: "Bibliya Web App",
-        subtitle: "A Unique Way to Study the Bible",
-        category: ["Web Application", "Education"],
-        image: 'm11.png',
-        link: 'https://bibliya.in',
-        description: "Developed Bibliya, a web application that allows users to study the Bible through interactive quizzes.",
-        aim: "To make Bible study engaging and interactive.",
-        challenges: "Creating an engaging learning experience with gamified quizzes and tracking user progress.",
-        project_goals: "Develop an interactive Bible study tool with quizzes and progress tracking.",
-        tech_stack: ["AWS", "Cloudflare", "S3", "Hostinger", "Next.js", "React", "PHP"],
-        key_features: ["Interactive quizzes", "User progress tracking", "Cloud storage"],
-        lessons_learned: "The effectiveness of gamification in educational applications."
-    },
+
 ];
 
 export const showcase = [
