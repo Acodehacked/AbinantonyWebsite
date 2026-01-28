@@ -13,7 +13,7 @@ import FuzzyText from "@/components/ui/FuzzyText/FuzzyText";
 import ScrollReveal from "@/components/ui/ScrollReveal/ScrollReveal";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { EVENTS, showcase } from "@/constants";
+import { EVENTS, showcase } from "@/lib";
 import { cn } from "@/lib/utils";
 import { ExternalLink, MouseIcon, Send } from "lucide-react";
 import Image from "next/image";

@@ -16,7 +16,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
-import { EVENTS } from "@/constants";
+import { EVENTS } from "@/lib";
 
 interface CarouselProps {
     title?: string;

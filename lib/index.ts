@@ -2,6 +2,48 @@
 
 export const EVENTS = [
     {
+        title: "Maison’s Realone – Premium Food Products",
+        subtitle: "Tradition You Can Taste. Purity You Can Trust.",
+        category: ["Website", "Food & FMCG"],
+        image: "m30.png",
+        link: "https://realone.in",
+        description: "Developed a brand-focused website for Maison’s Realone, showcasing their premium food products, traditional values, and legacy since 1988.",
+        aim: "To establish a strong digital presence for a trusted food brand and make product information easily accessible to customers.",
+        challenges: "Presenting traditional values in a modern web experience while maintaining trust, clarity, and simplicity for users.",
+        project_goals: "Design and develop a clean, user-friendly website that highlights products, brand story, certifications, and quality standards.",
+        tech_stack: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+        key_features: [
+            "Clean and modern UI",
+            "Product showcase pages",
+            "Mobile-responsive design",
+            "Brand story and certification sections",
+            "User-friendly navigation"
+        ],
+        lessons_learned: "Balancing traditional brand identity with modern web design enhances user trust and engagement."
+    },
+    {
+        "title": "NotTomorrow – A Calm Daily Life System",
+        "subtitle": "Not tomorrow. Today.",
+        "category": ["Mobile App", "Productivity", "Lifestyle"],
+        "image": "m31.png",
+        "link": "https://github.com/nottomorrow",
+        "description": "NotTomorrow is an offline-first mobile application designed to help students and freelancers overcome procrastination, manage time effectively, and focus on meaningful daily actions without pressure or guilt.",
+        "aim": "To help young people stop delaying important tasks, reduce screen time, and build consistent daily habits focused on learning, health, and personal growth.",
+        "challenges": "Designing a system that adapts to missed tasks, avoids calendar anxiety, works fully offline, and supports users emotionally without creating pressure or burnout.",
+        "project_goals": "Build a fast, privacy-first, and adaptive daily planning system that recalculates schedules automatically, replaces doomscrolling with intentional actions, and respects the user's mental space.",
+        "tech_stack": ["Flutter", "SQLite", "Riverpod", "Clean Architecture"],
+        "key_features": [
+            "Offline-first architecture using local database",
+            "Adaptive daily scheduling and auto-rescheduling",
+            "Non-calendar based daily flow view",
+            "Custom modes for college, exams, internships, and freelancing",
+            "Personal diary and memory keeper",
+            "Distraction-free and no-feed design",
+            "Privacy-focused with no ads or tracking"
+        ],
+        "lessons_learned": "Building calm, adaptive systems that respect users' mental health and privacy creates more sustainable productivity than rigid, notification-heavy tools."
+    },
+    {
         title: "Bibliya App - vachanavayal",
         subtitle: "A Unique Way to Study the Bible",
         category: ["Web Application", "Education"],

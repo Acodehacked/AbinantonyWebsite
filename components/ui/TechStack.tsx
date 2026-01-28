@@ -26,7 +26,7 @@ const categories = [
         label: "Frontend Development.",
         items: [
             { name: "React", icon: FaReact, color: "text-blue-400" },
-            { name: "Next.js", icon: SiNextdotjs, color: "text-black" },
+            { name: "Next.js", icon: SiNextdotjs, color: "text-neutral-800" },
             { name: "Vue.js", icon: FaVuejs, color: "text-green-500" },
             { name: "Angular", icon: FaAngular, color: "text-red-600" },
             { name: "Flutter", icon: SiFlutter, color: "text-blue-400" },
@@ -35,8 +35,8 @@ const categories = [
             { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-600" },
             { name: "MUI", icon: SiMui, color: "text-blue-600" },
             { name: "Chakra UI", icon: SiChakraui, color: "text-teal-500" },
-            { name: "ShadCN", icon: SiNextdotjs, color: "text-black" },
-            { name: "Three.js", icon: SiThreedotjs, color: "text-black" },
+            { name: "ShadCN", icon: SiNextdotjs, color: "text-neutral-800" },
+            { name: "Three.js", icon: SiThreedotjs, color: "text-neutral-800" },
             { name: "Framer Motion", icon: TbBrandFramerMotion, color: "text-purple-500" },
         ]
     },
@@ -45,7 +45,7 @@ const categories = [
         label: "Backend & Databases.",
         items: [
             { name: "Node.js", icon: FaNodeJs, color: "text-green-600" },
-            { name: "Express.js", icon: SiExpress, color: "text-black" },
+            { name: "Express.js", icon: SiExpress, color: "text-neutral-800" },
             { name: "Django", icon: SiDjango, color: "text-green-800" },
             { name: "FastAPI", icon: SiFastapi, color: "text-teal-600" },
             { name: "Laravel", icon: SiLaravel, color: "text-red-600" },
@@ -83,12 +83,12 @@ const categories = [
             { name: "Google Cloud", icon: FaGoogle, color: "text-blue-500" },
             { name: "DigitalOcean", icon: SiDigitalocean, color: "text-blue-600" },
             { name: "Cloudflare", icon: SiCloudflare, color: "text-orange-400" },
-            { name: "Vercel", icon: SiVercel, color: "text-black" },
+            { name: "Vercel", icon: SiVercel, color: "text-neutral-800" },
             { name: "Docker", icon: FaDocker, color: "text-blue-500" },
             { name: "Git", icon: FaGitAlt, color: "text-red-500" },
             { name: "GitHub Actions", icon: SiGithubactions, color: "text-blue-600" },
             { name: "GitLab CI", icon: SiGitlab, color: "text-orange-600" },
-            { name: "Linux", icon: FaLinux, color: "text-black" },
+            { name: "Linux", icon: FaLinux, color: "text-neutral-800" },
         ]
     },
     {
@@ -97,13 +97,13 @@ const categories = [
         items: [
             { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-600" },
             { name: "Terraform", icon: SiTerraform, color: "text-purple-600" },
-            { name: "Ansible", icon: SiAnsible, color: "text-black" },
+            { name: "Ansible", icon: SiAnsible, color: "text-neutral-800" },
             { name: "Jenkins", icon: SiJenkins, color: "text-red-600" },
             { name: "Prometheus", icon: SiPrometheus, color: "text-orange-600" },
             { name: "Grafana", icon: SiGrafana, color: "text-orange-500" },
             { name: "Nginx", icon: SiNginx, color: "text-green-600" },
             { name: "Apache", icon: SiApache, color: "text-red-500" },
-            { name: "Kafka", icon: SiApachekafka, color: "text-black" },
+            { name: "Kafka", icon: SiApachekafka, color: "text-neutral-800" },
             { name: "RabbitMQ", icon: SiRabbitmq, color: "text-orange-600" },
         ]
     },
@@ -129,7 +129,7 @@ const categories = [
         items: [
             { name: "TensorFlow", icon: SiTensorflow, color: "text-orange-500" },
             { name: "PyTorch", icon: SiPytorch, color: "text-red-500" },
-            { name: "OpenAI", icon: SiOpenai, color: "text-black" },
+            { name: "OpenAI", icon: SiOpenai, color: "text-neutral-800" },
             { name: "Hugging Face", icon: SiHuggingface, color: "text-yellow-500" },
             { name: "LangChain", icon: SiLangchain, color: "text-green-600" },
         ]

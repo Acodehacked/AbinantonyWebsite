@@ -1,220 +1,275 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Code, Layout, Smartphone, Cloud, Monitor, Palette, Server } from "lucide-react";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { FaReact, FaNodeJs, FaAws, FaFigma } from "react-icons/fa";
-import { SiNextdotjs, SiTailwindcss, SiFlutter } from "react-icons/si";
+import { useState, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Monitor, Smartphone, Palette, Cloud, Sparkles, Code2, Cpu, Layers } from "lucide-react";
+
+const services = [
+    {
+        id: 1,
+        title: "Web Development",
+        description: "Building blazing-fast, SEO-optimized websites and web applications with modern frameworks.",
+        icon: Monitor,
+        color: "from-blue-500 to-cyan-400",
+        shadowColor: "shadow-blue-500/20",
+        stats: ["50+ Projects", "99% Uptime", "< 1s Load"],
+    },
+    {
+        id: 2,
+        title: "Mobile Apps",
+        description: "Native and cross-platform mobile experiences that users love, built with Flutter & React Native.",
+        icon: Smartphone,
+        color: "from-violet-500 to-purple-400",
+        shadowColor: "shadow-violet-500/20",
+        stats: ["iOS & Android", "Offline-First", "60 FPS"],
+    },
+    {
+        id: 3,
+        title: "UI/UX Design",
+        description: "User-centered design that converts. From wireframes to pixel-perfect interfaces.",
+        icon: Palette,
+        color: "from-pink-500 to-rose-400",
+        shadowColor: "shadow-pink-500/20",
+        stats: ["Figma Expert", "Design Systems", "Prototyping"],
+    },
+    {
+        id: 4,
+        title: "Cloud & DevOps",
+        description: "Scalable infrastructure, CI/CD pipelines, and cloud architecture that grows with you.",
+        icon: Cloud,
+        color: "from-emerald-500 to-teal-400",
+        shadowColor: "shadow-emerald-500/20",
+        stats: ["AWS & GCP", "Docker/K8s", "Auto-Scale"],
+    },
+];
 
 export default function ServicesBento() {
+    const [activeService, setActiveService] = useState<number | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
     return (
-        <section className="px-6 md:px-20 py-24 bg-white">
-            <div className="mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold mb-6">What I do?</h2>
-                <p className="text-xl text-neutral-600 max-w-2xl">
-                    Discover our awesome services to make your business shine!
-                </p>
+        <section className="relative px-6 md:px-20 py-32 bg-neutral-950 overflow-hidden">
+            {/* Background Elements */}
+            <div className="absolute inset-0">
+                {/* Grid */}
+                <div
+                    className="absolute inset-0 opacity-[0.02]"
+                    style={{
+                        backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+                        backgroundSize: '40px 40px'
+                    }}
+                />
+
+                {/* Gradient orbs */}
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-500/10 rounded-full blur-[120px]" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[400px]">
+            <div className="relative z-10 max-w-7xl mx-auto">
+                {/* Header */}
+                <div className="text-center mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6"
+                    >
+                        <Sparkles className="w-4 h-4 text-violet-400" />
+                        <span className="text-sm text-neutral-400">Services</span>
+                    </motion.div>
 
-                {/* Web Development - Wide Card */}
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+                    >
+                        What I{" "}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-pink-400 to-orange-400">
+                            Bring
+                        </span>{" "}
+                        to Life
+                    </motion.h2>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto"
+                    >
+                        Transforming ideas into exceptional digital experiences through code, design, and innovation.
+                    </motion.p>
+                </div>
+
+                {/* Services Grid */}
+                <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {services.map((service, index) => (
+                        <ServiceCard
+                            key={service.id}
+                            service={service}
+                            index={index}
+                            isActive={activeService === service.id}
+                            onHover={() => setActiveService(service.id)}
+                            onLeave={() => setActiveService(null)}
+                        />
+                    ))}
+                </div>
+
+                {/* Bottom Stats */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="md:col-span-3 relative overflow-hidden rounded-3xl bg-neutral-50 border border-neutral-100 group hover:shadow-xl transition-all duration-300"
+                    transition={{ delay: 0.4 }}
+                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/10"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative z-10 p-10 h-full flex flex-col justify-between">
-                        <div className="max-w-md">
-                            <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-6">
-                                <Monitor className="w-6 h-6 text-blue-600" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-4">Web Development</h3>
-                            <p className="text-neutral-600 mb-6">
-                                Creating responsive and scalable websites tailored to your needs. From landing pages to complex web applications.
-                            </p>
-                            <button className="flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-3 transition-all">
-                                Get started <ArrowRight className="w-4 h-4" />
-                            </button>
+                    {[
+                        { value: "50+", label: "Projects Delivered" },
+                        { value: "30+", label: "Happy Clients" },
+                        { value: "5+", label: "Years Experience" },
+                        { value: "99%", label: "Client Satisfaction" },
+                    ].map((stat, i) => (
+                        <div key={i} className="text-center">
+                            <div className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</div>
+                            <div className="text-sm text-neutral-500">{stat.label}</div>
                         </div>
-
-                        {/* Visual: Mock Browser/Dashboard */}
-                        <div className="absolute right-0 top-10 w-[60%] h-full bg-white rounded-tl-2xl shadow-2xl border border-neutral-100 p-4 translate-x-10 group-hover:translate-x-5 transition-transform duration-500">
-                            <div className="flex items-center gap-2 mb-4 border-b border-neutral-100 pb-4">
-                                <div className="flex gap-1.5">
-                                    <div className="w-3 h-3 rounded-full bg-red-400" />
-                                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                                    <div className="w-3 h-3 rounded-full bg-green-400" />
-                                </div>
-                                <div className="h-4 w-40 bg-neutral-100 rounded-full ml-4" />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                <div className="h-32 bg-blue-50 rounded-xl p-4">
-                                    <div className="w-8 h-8 bg-blue-200 rounded-lg mb-2" />
-                                    <div className="h-2 w-16 bg-blue-200 rounded mb-1" />
-                                    <div className="h-2 w-10 bg-blue-100 rounded" />
-                                </div>
-                                <div className="h-32 bg-purple-50 rounded-xl p-4">
-                                    <div className="w-8 h-8 bg-purple-200 rounded-lg mb-2" />
-                                    <div className="h-2 w-16 bg-purple-200 rounded mb-1" />
-                                    <div className="h-2 w-10 bg-purple-100 rounded" />
-                                </div>
-                                <div className="col-span-2 h-24 bg-neutral-50 rounded-xl p-4 flex items-center gap-4">
-                                    <div className="flex-1 space-y-2">
-                                        <div className="h-2 w-full bg-neutral-200 rounded" />
-                                        <div className="h-2 w-[80%] bg-neutral-200 rounded" />
-                                    </div>
-                                    <div className="w-16 h-16 bg-neutral-200 rounded-full" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </motion.div>
-
-                {/* Mobile App - Tall Card */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="md:row-span-2 relative overflow-hidden rounded-3xl bg-neutral-50 border border-neutral-100 group hover:shadow-xl transition-all duration-300"
-                >
-                    <div className="absolute inset-0 bg-gradient-to-b from-neutral-50 to-neutral-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative z-10 p-10 h-full flex flex-col">
-                        <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-6">
-                            <Smartphone className="w-6 h-6 text-black" />
-                        </div>
-                        <h3 className="text-3xl font-bold mb-4">Mobile App Development</h3>
-                        <p className="text-neutral-600 mb-8">
-                            Designing intuitive and robust mobile applications for iOS and Android.
-                        </p>
-                        <button className="flex items-center gap-2 text-black font-semibold group-hover:gap-3 transition-all mb-auto">
-                            Get started <ArrowRight className="w-4 h-4" />
-                        </button>
-
-                        {/* Visual: Phone Mockup */}
-                        <div className="relative w-full h-80 mt-8 flex justify-center">
-                            <div className="w-48 h-full bg-black rounded-t-[3rem] border-8 border-black overflow-hidden relative shadow-2xl translate-y-10 group-hover:translate-y-4 transition-transform duration-500">
-                                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-b-xl z-20" />
-                                <div className="w-full h-full bg-white p-4 pt-12 space-y-4">
-                                    <div className="flex justify-between items-center">
-                                        <div className="w-8 h-8 bg-neutral-100 rounded-full" />
-                                        <div className="w-4 h-4 bg-neutral-100 rounded-full" />
-                                    </div>
-                                    <div className="h-32 bg-gradient-to-br from-pink-100 to-purple-100 rounded-2xl" />
-                                    <div className="grid grid-cols-4 gap-2">
-                                        {[1, 2, 3, 4].map(i => (
-                                            <div key={i} className="aspect-square bg-neutral-100 rounded-xl" />
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* UI/UX Design */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="md:col-span-2 relative overflow-hidden rounded-3xl bg-neutral-50 border border-neutral-100 group hover:shadow-xl transition-all duration-300"
-                >
-                    <div className="absolute inset-0 bg-gradient-to-r from-pink-50/50 to-orange-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative z-10 p-10 h-full flex flex-col md:flex-row items-center gap-8">
-                        <div className="flex-1">
-                            <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-6">
-                                <Palette className="w-6 h-6 text-pink-500" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-4">UI/UX Design</h3>
-                            <p className="text-neutral-600 mb-6">
-                                Crafting user-centric interfaces for an optimal digital experience.
-                            </p>
-                            <button className="flex items-center gap-2 text-pink-600 font-semibold group-hover:gap-3 transition-all">
-                                Get started <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </div>
-
-                        {/* Visual: Floating UI Elements */}
-                        <div className="flex-1 relative h-full w-full min-h-[200px]">
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-xs">
-                                <div className="bg-white p-4 rounded-xl shadow-lg border border-neutral-100 transform -rotate-6 group-hover:rotate-0 transition-transform duration-500 z-10 relative">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-xs font-bold text-pink-600">UI</div>
-                                        <div className="h-2 w-20 bg-neutral-100 rounded" />
-                                    </div>
-                                    <div className="h-2 w-full bg-neutral-50 rounded mb-2" />
-                                    <div className="h-2 w-3/4 bg-neutral-50 rounded" />
-                                </div>
-                                <div className="absolute top-4 left-4 bg-white p-4 rounded-xl shadow-lg border border-neutral-100 transform rotate-6 group-hover:rotate-0 transition-transform duration-500 z-0 opacity-80">
-                                    <div className="flex items-center gap-3 mb-3">
-                                        <div className="w-8 h-8 rounded-full bg-blue-100" />
-                                        <div className="h-2 w-20 bg-neutral-100 rounded" />
-                                    </div>
-                                    <div className="h-2 w-full bg-neutral-50 rounded" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Cloud Solutions */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="md:col-span-2 relative overflow-hidden rounded-3xl bg-neutral-50 border border-neutral-100 group hover:shadow-xl transition-all duration-300"
-                >
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative z-10 p-10 h-full flex flex-col md:flex-row-reverse items-center gap-8">
-                        <div className="flex-1">
-                            <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center mb-6">
-                                <Cloud className="w-6 h-6 text-green-600" />
-                            </div>
-                            <h3 className="text-3xl font-bold mb-4">Cloud Solutions</h3>
-                            <p className="text-neutral-600 mb-6">
-                                Architecting scalable and secure cloud infrastructure.
-                            </p>
-                            <button className="flex items-center gap-2 text-green-600 font-semibold group-hover:gap-3 transition-all">
-                                Get started <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </div>
-
-                        {/* Visual: Server/Network */}
-                        <div className="flex-1 relative h-full w-full min-h-[200px] flex items-center justify-center">
-                            <div className="grid grid-cols-2 gap-4 transform group-hover:scale-105 transition-transform duration-500">
-                                <div className="bg-white p-4 rounded-2xl shadow-md border border-neutral-100 flex flex-col items-center gap-2">
-                                    <FaAws className="w-8 h-8 text-orange-500" />
-                                    <span className="text-xs font-bold text-neutral-500">AWS</span>
-                                </div>
-                                <div className="bg-white p-4 rounded-2xl shadow-md border border-neutral-100 flex flex-col items-center gap-2 mt-8">
-                                    <FaNodeJs className="w-8 h-8 text-green-600" />
-                                    <span className="text-xs font-bold text-neutral-500">Node</span>
-                                </div>
-                                <div className="bg-white p-4 rounded-2xl shadow-md border border-neutral-100 flex flex-col items-center gap-2 -mt-8">
-                                    <FaReact className="w-8 h-8 text-blue-400" />
-                                    <span className="text-xs font-bold text-neutral-500">React</span>
-                                </div>
-                                <div className="bg-white p-4 rounded-2xl shadow-md border border-neutral-100 flex flex-col items-center gap-2">
-                                    <Server className="w-8 h-8 text-neutral-600" />
-                                    <span className="text-xs font-bold text-neutral-500">Server</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
-
             </div>
         </section>
+    );
+}
+
+function ServiceCard({
+    service,
+    index,
+    isActive,
+    onHover,
+    onLeave,
+}: {
+    service: typeof services[0];
+    index: number;
+    isActive: boolean;
+    onHover: () => void;
+    onLeave: () => void;
+}) {
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    // Mouse position for spotlight effect
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Smooth spring animation
+    const springConfig = { damping: 25, stiffness: 200 };
+    const spotlightX = useSpring(mouseX, springConfig);
+    const spotlightY = useSpring(mouseY, springConfig);
+
+    // 3D rotation based on mouse position
+    const rotateX = useTransform(mouseY, [-150, 150], [5, -5]);
+    const rotateY = useTransform(mouseX, [-150, 150], [-5, 5]);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        mouseX.set(e.clientX - centerX);
+        mouseY.set(e.clientY - centerY);
+    };
+
+    const handleMouseLeave = () => {
+        mouseX.set(0);
+        mouseY.set(0);
+        onLeave();
+    };
+
+    const Icon = service.icon;
+
+    return (
+        <motion.div
+            ref={cardRef}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={onHover}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX: isActive ? rotateX : 0,
+                rotateY: isActive ? rotateY : 0,
+                transformStyle: "preserve-3d",
+            }}
+            className="group relative"
+        >
+            <div className={`relative h-full p-8 md:p-10 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-sm overflow-hidden transition-all duration-500 ${isActive ? `shadow-2xl ${service.shadowColor}` : ''}`}>
+
+                {/* Spotlight effect */}
+                <motion.div
+                    className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                        background: `radial-gradient(400px circle at ${spotlightX}px ${spotlightY}px, rgba(255,255,255,0.06), transparent 40%)`,
+                    }}
+                />
+
+                {/* Gradient border on hover */}
+                <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r ${service.color} p-[1px]`}>
+                    <div className="w-full h-full rounded-3xl bg-neutral-950" />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                    {/* Icon */}
+                    <motion.div
+                        className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-[1px] mb-8`}
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                    >
+                        <div className="w-full h-full rounded-2xl bg-neutral-950 flex items-center justify-center">
+                            <Icon className="w-7 h-7 text-white" />
+                        </div>
+                    </motion.div>
+
+                    {/* Title & Description */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/60 transition-all duration-300">
+                        {service.title}
+                    </h3>
+                    <p className="text-neutral-400 mb-8 leading-relaxed">
+                        {service.description}
+                    </p>
+
+                    {/* Stats Pills */}
+                    <div className="flex flex-wrap gap-2">
+                        {service.stats.map((stat, i) => (
+                            <motion.span
+                                key={i}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.3 + i * 0.1 }}
+                                className="px-3 py-1.5 text-xs font-medium text-neutral-300 bg-white/5 rounded-full border border-white/10"
+                            >
+                                {stat}
+                            </motion.span>
+                        ))}
+                    </div>
+
+                    {/* Hover Arrow */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -10 }}
+                        className="absolute top-8 right-8 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center"
+                    >
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </motion.div>
+                </div>
+
+                {/* Corner Glow */}
+                <div className={`absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-3xl transition-opacity duration-500`} />
+            </div>
+        </motion.div>
     );
 }

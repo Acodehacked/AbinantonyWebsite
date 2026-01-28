@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ExternalLink, Send, MouseIcon } from "lucide-react";
-import { EVENTS, showcase } from "@/constants";
+import { EVENTS, showcase } from "@/lib";
 import React from "react";
 
 export default function HomePage() {

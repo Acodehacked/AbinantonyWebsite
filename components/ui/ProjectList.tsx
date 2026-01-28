@@ -5,7 +5,7 @@ import { motion, useSpring, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, slugify } from "@/lib/utils";
 
 interface Project {
     title: string;
@@ -52,7 +52,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
                 {projects.map((project, index) => (
                     <Link
                         key={index}
-                        href={`/projects/${project.title.replaceAll(" ", "-")}`}
+                        href={`/projects/${slugify(project.title)}`}
                         className="group relative flex items-center justify-between py-12 border-b border-neutral-200 hover:px-4 transition-all duration-300"
                         onMouseEnter={() => setActiveProject(index)}
                     >

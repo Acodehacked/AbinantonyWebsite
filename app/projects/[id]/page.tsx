@@ -1,6 +1,7 @@
-import { EVENTS } from "@/constants";
+import { EVENTS } from "@/lib";
 import ProjectDetails from "@/components/ui/ProjectDetails";
 import Link from "next/link";
+import { slugify } from "@/lib/utils";
 
 export default async function Page({
     params,
@@ -8,7 +9,7 @@ export default async function Page({
     params: Promise<{ id: string }>
 }) {
     const { id } = await params;
-    const project = EVENTS.find((event) => event.title.replaceAll(" ", "-") === id);
+    const project = EVENTS.find((event) => slugify(event.title) === id);
 
     if (!project) {
         return (
