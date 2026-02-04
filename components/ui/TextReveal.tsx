@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, useInView, Variant } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 
 interface TextRevealProps {
@@ -22,7 +22,7 @@ export default function TextReveal({
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-10%" });
 
-    const container: Variant = {
+    const container: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -33,7 +33,7 @@ export default function TextReveal({
         },
     };
 
-    const child: Variant = {
+    const child: Variants = {
         hidden: {
             opacity: 0,
             y: 20,
