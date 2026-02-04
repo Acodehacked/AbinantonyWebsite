@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Golos_Text } from "next/font/google";
+import { Syne, Manrope } from "next/font/google";
 import "@/app/globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 
-const golos = Golos_Text({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-golos",
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -75,8 +82,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="tracking-wider">
-      <body className={`${golos.variable} font-sans tracking-wider bg-white text-black antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${syne.variable} ${manrope.variable} font-sans bg-background text-foreground antialiased selection:bg-black selection:text-white`}>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

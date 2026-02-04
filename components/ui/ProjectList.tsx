@@ -53,20 +53,20 @@ export default function ProjectList({ projects }: ProjectListProps) {
                     <Link
                         key={index}
                         href={`/projects/${slugify(project.title)}`}
-                        className="group relative flex items-center justify-between py-12 border-b border-neutral-200 hover:px-4 transition-all duration-300"
+                        className="group relative flex items-center justify-between py-6 border-b border-black/10 hover:px-4 transition-all duration-300"
                         onMouseEnter={() => setActiveProject(index)}
                     >
                         <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
-                            <h3 className="text-3xl md:text-5xl font-bold text-neutral-300 group-hover:text-black transition-colors duration-300 tracking-wide">
+                            <h3 className="text-3xl md:text-4xl font-bold font-syne text-neutral-300 group-hover:text-black transition-colors duration-300 tracking-tighter">
                                 {project.title}
                             </h3>
-                            <span className="text-sm md:text-base text-neutral-400 group-hover:text-neutral-600 transition-colors uppercase tracking-widest">
+                            <span className="text-sm md:text-base font-manrope text-neutral-400 group-hover:text-neutral-600 transition-colors uppercase tracking-widest">
                                 {project.category[0]}
                             </span>
                         </div>
 
                         <div className="hidden md:flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0">
-                            <span className="text-sm font-bold uppercase tracking-widest">View Case Study</span>
+                            <span className="text-sm font-bold uppercase tracking-widest font-manrope">View Case Study</span>
                             <ArrowRight className="w-5 h-5" />
                         </div>
                     </Link>

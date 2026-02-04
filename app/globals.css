@@ -1,71 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 0 0% 0%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 240 5.9% 10%;
+    --primary: 0 0% 9%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 0%;
 
-    --radius: 0.5rem;
+    --radius: 0rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 3%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 3.9%;
+    --card: 0 0% 3%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 0 0% 3%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
 
-    --accent: 240 3.7% 15.9%;
+    --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
 }
 
@@ -74,109 +72,33 @@
     @apply border-border;
   }
 
-  .title {
-    @apply pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10;
-  }
-
   body {
     @apply bg-background text-foreground tracking-tight;
   }
-
-  .border-w {
-    @apply border-b md:border-white/70 border-white/20 px-5;
-  }
-
-  .font-p {
-    @apply font-[Poppins];
-  }
-
 }
 
-/* global.css */
-.futuristic-glow {
-  text-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff, 0 0 20px #00f7ff;
+/* Typography Utilities */
+.font-syne {
+  font-family: 'Syne', sans-serif;
 }
 
-.neon-border {
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.1), 0 0 10px rgba(0, 255, 255, 0.03);
-  transition: all 0.3s ease;
+.font-manrope {
+  font-family: 'Manrope', sans-serif;
 }
 
-.neon-border:hover {
-  box-shadow: 0 0 8px rgba(0, 255, 255, 0.6), 0 0 16px rgba(0, 255, 255, 0.4), 0 0 24px rgba(0, 255, 255, 0.3);
-  transform: scale(1.05);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
-.justifyCenter {
-  justify-content: center;
-  align-items: center;
-}
-
-.strok-black {
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgba(90, 54, 0, 0.651);
-}
-
-.title-text {
-  font-family: "Oswald", sans-serif;
-}
-
-.glow-text {
-  text-shadow: 0px 0px 70px #ffffff57;
-}
-
-.sizedbutton {
-  position: relative;
-  color: white;
-}
-
-.sizedbutton:hover::after {
-  width: 100%;
-  height: 100%;
-}
-
-.sizedbutton:hover {
-  animation: sizeup 0.1s ease-in;
-}
-
-@keyframes sizeup {
-  0% {
-    transform: scale(1);
-  }
-
-  40% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.sizedbutton .span {
-  position: relative;
-  z-index: 3;
+/* Selection */
+::selection {
+  background-color: #000;
   color: #fff;
 }
 
-.sizedbutton::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  transition: 0.1s ease-in-out;
-  transform-origin: 50%;
-  right: 0;
-  width: 0px;
-  height: 0px;
-  background-color: rgb(0, 7, 110);
-}
-
-::selection {
-  background-color: #1ceb61c7;
-  /* Use Tailwind classes here */
+.dark ::selection {
+  background-color: #fff;
   color: #000;
-  /* Use Tailwind classes here */
 }

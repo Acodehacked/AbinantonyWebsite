@@ -1,74 +1,58 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { BackgroundBeams } from "./BackgroundBeams";
+import TextReveal from "./TextReveal";
+import MagneticButton from "./MagneticButton";
+import { ArrowDown } from "lucide-react";
 
 export default function HeroSection() {
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 overflow-hidden bg-deep-purple text-white">
-            {/* Background */}
-            <BackgroundBeams />
+        <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-20 pt-20 overflow-hidden bg-white text-black">
 
-            <div className="relative z-10 max-w-5xl mx-auto text-center flex flex-col items-center">
-                {/* Top Pill Label */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-8"
-                >
-                    <span className="w-2 h-2 rounded-full bg-neon-violet animate-pulse" />
-                    <span className="text-sm font-medium text-neutral-300">Available for projects</span>
-                </motion.div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neutral-100 rounded-full blur-[120px] -z-10" />
 
-                {/* Main Heading */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60"
-                >
-                    Accelerate Your <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Digital Presence</span>
-                </motion.h1>
+            <div className="z-10 flex flex-col items-center text-center">
 
-                {/* Subheading */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="max-w-2xl text-lg md:text-xl text-neutral-400 leading-relaxed mb-10"
-                >
-                    Highly personalized web experiences, expertly curated to meet your objectives and drive your business forward with modern tech.
-                </motion.p>
-
-                {/* Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row items-center gap-4"
+                    transition={{ duration: 0.6 }}
+                    className="mb-6 flex items-center gap-2 border border-black/5 bg-neutral-50/50 px-4 py-1.5 rounded-full backdrop-blur-sm"
                 >
-                    <Link
-                        href="#contact"
-                        className="group relative inline-flex items-center gap-2 px-8 py-4 bg-neon-violet text-white rounded-full font-bold text-lg hover:bg-violet-600 transition-all shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_40px_rgba(124,58,237,0.7)]"
-                    >
-                        Get Started <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                    <Link
-                        href="#projects"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 text-white border border-white/10 rounded-full font-bold text-lg hover:bg-white/10 transition-colors backdrop-blur-sm"
-                    >
-                        View Work
-                    </Link>
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-xs font-medium tracking-wide uppercase text-neutral-500">Available for freelance</span>
                 </motion.div>
+
+                <h1 className="text-[12vw] leading-[0.85] font-syne font-bold tracking-tighter mb-4 text-black mix-blend-multiply">
+                    <TextReveal text="CREATIVE" delay={0.1} />
+                    {/* <br /> */}
+                    <TextReveal text="DEVELOPER" delay={0.2} />
+                </h1>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.8 }}
+                    className="flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mt-12 gap-8 md:gap-0"
+                >
+                    <div className="text-left max-w-sm">
+                        <p className="font-manrope text-lg text-neutral-600 leading-relaxed">
+                            Bringing bold ideas to life with precision. A digital product designer & developer crafting intuitive, engaging, and seamless digital experiences.
+                        </p>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                        <MagneticButton>
+                            <a href="#projects" className="h-16 w-16 rounded-full border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300">
+                                <ArrowDown className="w-6 h-6 animate-bounce" />
+                            </a>
+                        </MagneticButton>
+                    </div>
+                </motion.div>
+
             </div>
-
-            {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-deep-purple to-transparent z-10" />
         </section>
     );
 }
+
