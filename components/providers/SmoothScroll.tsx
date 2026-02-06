@@ -1,30 +1,39 @@
-"use client";
+// app/page.tsx or components/SmoothScrollWrapper.tsx
+'use client';
 
-import { ReactNode, useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+import React, { useEffect } from 'react';
+import Lenis from '@studio-freight/lenis';
 
-export default function SmoothScroll({ children }: { children: ReactNode }) {
+interface SmoothScrollWrapperProps {
+    children: React.ReactNode;
+}
+
+const SmoothScrollWrapper: React.FC<SmoothScrollWrapperProps> = ({ children }) => {
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 0.5,
-            // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            orientation: 'vertical',
-            gestureOrientation: 'vertical',
+            duration: 0.6,              // 👈 BIG FIX
+            easing: (t) => 1 - Math.pow(1 - t, 3),
             smoothWheel: true,
-            wheelMultiplier: 1.2,
-            touchMultiplier: 2,
+            syncTouch: false,
+            wheelMultiplier: 1.2,       // 👈 makes wheel feel responsive
+            touchMultiplier: 1.5,
         });
-        function raf(time: number) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
 
-        requestAnimationFrame(raf);
+        let rafId: number;
+
+        const raf = (time: number) => {
+            lenis.raf(time);
+            rafId = requestAnimationFrame(raf);
+        };
+
+        rafId = requestAnimationFrame(raf);
 
         return () => {
+            cancelAnimationFrame(rafId);
             lenis.destroy();
         };
     }, []);
-
     return <>{children}</>;
-}
+};
+
+export default SmoothScrollWrapper;
