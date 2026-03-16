@@ -53,20 +53,20 @@ export default function ProjectList({ projects }: ProjectListProps) {
                     <Link
                         key={index}
                         href={`/projects/${slugify(project.title)}`}
-                        className="group relative flex items-center justify-between py-6 border-b border-black/10 hover:px-4 transition-all duration-300"
+                        className="group relative flex items-center justify-between border-b border-white/10 py-6 transition-all duration-300 hover:px-4"
                         onMouseEnter={() => setActiveProject(index)}
                     >
                         <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-8">
-                            <h3 className="text-3xl md:text-4xl font-bold font-syne text-neutral-300 group-hover:text-black transition-colors duration-300 tracking-tighter">
+                            <h3 className="font-syne text-3xl font-bold tracking-tighter text-neutral-500 transition-colors duration-300 group-hover:text-white md:text-4xl">
                                 {project.title}
                             </h3>
-                            <span className="text-sm md:text-base font-manrope text-neutral-400 group-hover:text-neutral-600 transition-colors uppercase tracking-widest">
+                            <span className="font-manrope text-sm uppercase tracking-widest text-neutral-500 transition-colors group-hover:text-neutral-300 md:text-base">
                                 {project.category[0]}
                             </span>
                         </div>
 
                         <div className="hidden md:flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0">
-                            <span className="text-sm font-bold uppercase tracking-widest font-manrope">View Case Study</span>
+                            <span className="font-manrope text-sm font-bold uppercase tracking-widest text-white">View Case Study</span>
                             <ArrowRight className="w-5 h-5" />
                         </div>
                     </Link>

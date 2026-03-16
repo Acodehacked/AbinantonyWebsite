@@ -151,11 +151,11 @@ export default function TechStack() {
     }, [activeCategory]);
 
     return (
-        <section className="px-6 md:px-20 py-24 bg-neutral-50">
+        <section className="bg-neutral-950 px-6 py-24 md:px-20">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
                 {/* Left Column: Categories */}
                 <div className="md:col-span-5 space-y-8">
-                    <h2 className="text-4xl md:text-6xl font-bold text-neutral-300 mb-12">Technologies</h2>
+                    <h2 className="mb-12 text-4xl font-bold text-neutral-600 md:text-6xl">Technologies</h2>
                     <div className="flex flex-col gap-4">
                         {categories.map((category) => (
                             <button
@@ -164,8 +164,8 @@ export default function TechStack() {
                                 className={cn(
                                     "text-left text-2xl md:text-4xl font-bold transition-all duration-300",
                                     activeCategory === category.id
-                                        ? "text-black translate-x-4"
-                                        : "text-neutral-300 hover:text-neutral-400"
+                                        ? "text-white translate-x-4"
+                                        : "text-neutral-500 hover:text-neutral-300"
                                 )}
                             >
                                 {category.label}
@@ -182,10 +182,10 @@ export default function TechStack() {
                             ?.items.map((item) => (
                                 <div
                                     key={item.name}
-                                    className="group relative flex items-center gap-2 px-6 py-3 bg-white border border-neutral-200 rounded-full hover:border-black transition-all duration-200 hover:scale-105 shadow-sm hover:shadow-md cursor-default"
+                                    className="group relative flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900 px-6 py-3 transition-all duration-200 hover:scale-105 hover:border-neutral-500 cursor-default"
                                 >
                                     <item.icon className={cn("w-6 h-6 transition-colors", item.color)} />
-                                    <span className="text-lg font-medium text-neutral-600 group-hover:text-black transition-colors">
+                                    <span className="text-lg font-medium text-neutral-300 transition-colors group-hover:text-white">
                                         {item.name}
                                     </span>
                                 </div>

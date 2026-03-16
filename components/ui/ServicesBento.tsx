@@ -40,7 +40,7 @@ export default function ServicesBento() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     return (
-        <section className="relative px-6 md:px-20 py-32 bg-white overflow-hidden">
+        <section className="relative overflow-hidden bg-neutral-950 px-6 py-32 md:px-20">
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Header */}
@@ -50,7 +50,7 @@ export default function ServicesBento() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-8xl font-bold font-syne text-black mb-6 tracking-tighter"
+                        className="mb-6 font-syne text-4xl font-bold tracking-tighter text-white md:text-8xl"
                     >
                         Services
                     </motion.h2>
@@ -60,7 +60,7 @@ export default function ServicesBento() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-lg md:text-2xl font-manrope text-neutral-600 max-w-2xl"
+                        className="max-w-2xl font-manrope text-lg text-neutral-400 md:text-2xl"
                     >
                         Transforming ideas into exceptional digital experiences through code, design, and innovation.
                     </motion.p>
@@ -111,18 +111,18 @@ function ServiceCard({
             transition={{ delay: index * 0.1, duration: 0.5 }}
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
-            className="group relative border border-black/10 p-8 md:p-12 hover:bg-neutral-50 transition-colors duration-500"
+            className="group relative border border-white/10 bg-neutral-900/40 p-8 transition-colors duration-500 hover:bg-neutral-900 md:p-12"
         >
             <div className="relative z-10">
                 <div className="flex items-start justify-between mb-8">
-                    <Icon className="w-10 h-10 text-black stroke-1" />
-                    <span className="text-sm font-manrope text-neutral-400">0{index + 1}</span>
+                    <Icon className="w-10 h-10 text-white stroke-1" />
+                    <span className="text-sm font-manrope text-neutral-500">0{index + 1}</span>
                 </div>
 
-                <h3 className="text-2xl md:text-4xl font-bold font-syne text-black mb-4">
+                <h3 className="mb-4 font-syne text-2xl font-bold text-white md:text-4xl">
                     {service.title}
                 </h3>
-                <p className="font-manrope text-neutral-500 mb-8 leading-relaxed text-lg">
+                <p className="mb-8 font-manrope text-lg leading-relaxed text-neutral-400">
                     {service.description}
                 </p>
 
@@ -130,7 +130,7 @@ function ServiceCard({
                     {service.stats.map((stat, i) => (
                         <span
                             key={i}
-                            className="px-3 py-1.5 text-xs font-bold font-manrope text-neutral-600 bg-neutral-100 rounded-full border border-neutral-200"
+                            className="rounded-full border border-neutral-700 bg-neutral-800 px-3 py-1.5 font-manrope text-xs font-bold text-neutral-300"
                         >
                             {stat}
                         </span>

@@ -11,12 +11,12 @@ interface SmoothScrollWrapperProps {
 const SmoothScrollWrapper: React.FC<SmoothScrollWrapperProps> = ({ children }) => {
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 0.6,              // 👈 BIG FIX
-            easing: (t) => 1 - Math.pow(1 - t, 3),
+            duration: 1.05,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
             smoothWheel: true,
             syncTouch: false,
-            wheelMultiplier: 1.2,       // 👈 makes wheel feel responsive
-            touchMultiplier: 1.5,
+            wheelMultiplier: 0.95,
+            touchMultiplier: 1.1,
         });
 
         let rafId: number;

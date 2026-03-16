@@ -63,13 +63,13 @@ export default function Navbar() {
             <header
                 className={cn(
                     "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 md:px-12 py-6 flex items-center justify-between",
-                    scrolled ? "bg-white/80 backdrop-blur-md py-4 border-b border-black/5" : "bg-transparent"
+                    scrolled ? "bg-neutral-950/85 backdrop-blur-md py-4 border-b border-white/10" : "bg-transparent"
                 )}
             >
                 {/* Logo */}
                 <Link href="/" className="z-[60] relative group">
-                    <span className="text-xl font-bold tracking-tighter font-syne flex items-center gap-1">
-                        <span className="w-2 h-2 rounded-full bg-black group-hover:bg-neutral-500 transition-colors"></span>
+                    <span className="text-xl font-bold tracking-tighter font-syne flex items-center gap-1 text-white">
+                        <span className="w-2 h-2 rounded-full bg-orange-400 group-hover:bg-blue-400 transition-colors"></span>
                         Abinantony.
                     </span>
                 </Link>
@@ -80,7 +80,7 @@ export default function Navbar() {
                         <Link
                             key={idx}
                             href={link.href}
-                            className="text-sm font-medium text-neutral-600 hover:text-black transition-colors"
+                            className="text-sm font-medium text-neutral-300 hover:text-white transition-colors"
                         >
                             {link.label}
                         </Link>
@@ -90,7 +90,7 @@ export default function Navbar() {
                 {/* Desktop Right (CTA + Menu Trigger for consistency if wanted, or just CTA) */}
                 <div className="hidden md:flex items-center gap-4">
                     <MagneticButton>
-                        <Link href="/#contact" className="px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-neutral-800 transition-colors flex items-center gap-2">
+                        <Link href="/#contact" className="px-5 py-2.5 rounded-full bg-white text-black text-sm font-medium hover:bg-neutral-200 transition-colors flex items-center gap-2">
                             Get in Touch <ArrowRight className="w-3 h-3" />
                         </Link>
                     </MagneticButton>
@@ -102,15 +102,15 @@ export default function Navbar() {
                     className="md:hidden z-[60] relative w-8 h-8 flex flex-col justify-center items-center gap-1.5 group"
                 >
                     <motion.span
-                        animate={isOpen ? { rotate: 45, y: 6, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
+                        animate={isOpen ? { rotate: 45, y: 6, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
                         className="w-full h-0.5 block origin-center transition-colors"
                     />
                     <motion.span
-                        animate={isOpen ? { opacity: 0 } : { opacity: 1, backgroundColor: "#000000" }}
+                        animate={isOpen ? { opacity: 0 } : { opacity: 1, backgroundColor: "#ffffff" }}
                         className="w-full h-0.5 block transition-colors"
                     />
                     <motion.span
-                        animate={isOpen ? { rotate: -45, y: -6, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
+                        animate={isOpen ? { rotate: -45, y: -6, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#ffffff" }}
                         className="w-full h-0.5 block origin-center transition-colors"
                     />
                 </button>

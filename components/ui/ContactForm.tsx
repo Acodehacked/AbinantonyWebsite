@@ -72,11 +72,11 @@ export default function ContactForm() {
     };
 
     return (
-        <section id="contact" className="px-6 md:px-20 py-24 bg-white">
+        <section id="contact" className="bg-neutral-950 px-6 py-24 md:px-20">
             <div className="max-w-5xl mx-auto">
                 <div className="mb-16">
-                    <h2 className="text-4xl md:text-6xl font-bold mb-6">Let's start a project</h2>
-                    <p className="text-xl text-neutral-600">
+                    <h2 className="mb-6 text-4xl font-bold text-white md:text-6xl">Let's start a project</h2>
+                    <p className="text-xl text-neutral-400">
                         Interested in working together? We should queue up a time to chat.
                         <br />
                         I’ll buy the coffee.
@@ -95,7 +95,7 @@ export default function ContactForm() {
                                 id="name"
                                 required
                                 placeholder="Hello..."
-                                className="w-full border-b border-neutral-300 py-4 bg-transparent outline-none focus:border-black transition-colors placeholder:text-neutral-400"
+                                className="w-full border-b border-neutral-700 py-4 bg-transparent text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-white"
                             />
                         </div>
                         <div className="space-y-2">
@@ -108,7 +108,7 @@ export default function ContactForm() {
                                 id="email"
                                 required
                                 placeholder="Where can I reply?"
-                                className="w-full border-b border-neutral-300 py-4 bg-transparent outline-none focus:border-black transition-colors placeholder:text-neutral-400"
+                                className="w-full border-b border-neutral-700 py-4 bg-transparent text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-white"
                             />
                         </div>
                     </div>
@@ -122,7 +122,7 @@ export default function ContactForm() {
                             name="company"
                             id="company"
                             placeholder="Your company or website?"
-                            className="w-full border-b border-neutral-300 py-4 bg-transparent outline-none focus:border-black transition-colors placeholder:text-neutral-400"
+                            className="w-full border-b border-neutral-700 py-4 bg-transparent text-white outline-none transition-colors placeholder:text-neutral-500 focus:border-white"
                         />
                     </div>
 
@@ -139,8 +139,8 @@ export default function ContactForm() {
                                     className={cn(
                                         "px-6 py-3 rounded-full border transition-all duration-300 text-sm md:text-base",
                                         selectedServices.includes(service)
-                                            ? "bg-black text-white border-black"
-                                            : "bg-neutral-50 text-neutral-600 border-neutral-200 hover:border-neutral-400"
+                                            ? "bg-white text-black border-white"
+                                            : "bg-neutral-900 text-neutral-300 border-neutral-700 hover:border-neutral-500"
                                     )}
                                 >
                                     {service}
@@ -162,7 +162,7 @@ export default function ContactForm() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white rounded-full font-bold text-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:hover:scale-100"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-lg hover:scale-105 transition-transform disabled:opacity-50 disabled:hover:scale-100"
                         >
                             {isSubmitting ? "Sending..." : "Send Message"} <ArrowRight className="w-5 h-5" />
                         </button>
