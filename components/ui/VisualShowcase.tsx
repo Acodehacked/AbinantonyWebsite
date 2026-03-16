@@ -21,31 +21,46 @@ export default function VisualShowcase() {
     });
 
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+    const headerY = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
+    const y0 = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+    const y1 = useTransform(scrollYProgress, [0, 1], ["-4%", "8%"]);
+    const y2 = useTransform(scrollYProgress, [0, 1], ["8%", "-4%"]);
+    const y3 = useTransform(scrollYProgress, [0, 1], ["-6%", "10%"]);
+    const y4 = useTransform(scrollYProgress, [0, 1], ["5%", "-7%"]);
+    const yOffsets = [y0, y1, y2, y3, y4];
+    const ix0 = useTransform(scrollYProgress, [0, 1], ["-6%", "8%"]);
+    const ix1 = useTransform(scrollYProgress, [0, 1], ["7%", "-6%"]);
+    const ix2 = useTransform(scrollYProgress, [0, 1], ["-8%", "6%"]);
+    const ix3 = useTransform(scrollYProgress, [0, 1], ["6%", "-7%"]);
+    const ix4 = useTransform(scrollYProgress, [0, 1], ["-7%", "5%"]);
+    const imageXOffsets = [ix0, ix1, ix2, ix3, ix4];
 
     return (
         <section ref={containerRef} className="relative h-[400vh] bg-neutral-950 text-white">
             <div className="sticky top-0 h-screen overflow-hidden flex flex-col justify-center">
 
-                <div className="absolute top-10 left-6 md:left-20 z-10">
+                <motion.div style={{ y: headerY }} className="absolute top-10 left-6 md:left-20 z-10">
                     <h2 className="text-4xl md:text-7xl font-bold font-syne mb-4 tracking-tighter">
-                        Visual Playground
+                        Selected Visual Work
                     </h2>
                     <p className="font-manrope text-lg text-neutral-400">
-                        A collection of latest design explorations and visual experiments.
+                        Design-focused builds that reflect my style, process, and product thinking.
                     </p>
-                </div>
+                </motion.div>
 
                 <div className="relative w-full h-[60vh] mt-20">
                     <motion.div style={{ x }} className="flex gap-4 md:gap-10 pl-6 md:pl-20 items-center h-full absolute left-0">
                         {showcaseItems.map((item, index) => (
-                            <div key={index} className="relative w-[300px] md:w-[600px] h-full flex-shrink-0 group">
+                            <motion.div key={index} style={{ y: yOffsets[index] }} className="relative w-[300px] md:w-[600px] h-full flex-shrink-0 group">
                                 <div className="relative h-full w-full overflow-hidden rounded-none border border-white/10">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.title}
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105 saturate-0 group-hover:saturate-100"
-                                    />
+                                    <motion.div style={{ x: imageXOffsets[index] }} className="absolute inset-0 scale-110">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105 saturate-0 group-hover:saturate-100"
+                                        />
+                                    </motion.div>
                                     <div className="absolute inset-0 bg-black/25 group-hover:bg-black/0 transition-colors duration-300" />
                                 </div>
                                 <div className="mt-4 flex justify-between items-start">
@@ -55,7 +70,7 @@ export default function VisualShowcase() {
                                     </div>
                                     <span className="font-manrope text-sm text-neutral-500">0{index + 1}</span>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </motion.div>
                 </div>

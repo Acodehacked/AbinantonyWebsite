@@ -10,37 +10,37 @@ const storyBeats = [
         id: "01",
         from: 0,
         to: 0.22,
-        label: "Prologue",
-        title: "Designing For First Impression",
+        label: "Who I Am",
+        title: "I Design With Purpose.",
         description:
-            "The story starts with mood, contrast, and attention. Every pixel is tuned to create an immediate emotional pull.",
+            "I am Abin Antony, a developer who blends design thinking with clean code to create meaningful digital experiences.",
     },
     {
         id: "02",
         from: 0.22,
         to: 0.5,
-        label: "Act I",
-        title: "Engineering The Experience",
+        label: "What I Build",
+        title: "Fast, Modern Web Products.",
         description:
-            "As the camera moves, the stack moves with it. Frontend fluidity, backend reliability, and performance-first decisions.",
+            "I build responsive interfaces, reliable APIs, and scalable systems that perform smoothly across devices.",
     },
     {
         id: "03",
         from: 0.5,
         to: 0.78,
-        label: "Act II",
-        title: "From Idea To Product",
+        label: "How I Work",
+        title: "Simple Ideas. Solid Execution.",
         description:
-            "Every section is crafted like a product launch: clear narrative, precise interactions, and measurable outcomes.",
+            "I take ideas from concept to launch with clear UX, practical architecture, and attention to detail.",
     },
     {
         id: "04",
         from: 0.78,
         to: 1,
-        label: "Finale",
-        title: "Built To Scale",
+        label: "What You Get",
+        title: "Products Ready For Growth.",
         description:
-            "The final frame is clarity. Production-ready systems, clean architecture, and design that grows with your business.",
+            "You get production-ready products that are maintainable, scalable, and built to support real business growth.",
     },
 ];
 
@@ -264,7 +264,7 @@ export default function HeroSection() {
 
                     <div className="absolute bottom-10 left-6 right-6 z-[35] flex items-end justify-between md:left-20 md:right-20">
                         <p className="font-manrope text-xs uppercase tracking-[0.22em] text-white/60">
-                            Scroll to scrub the sequence
+                            Scroll to drive the story
                         </p>
 
                         <MagneticButton>
