@@ -2,6 +2,44 @@
 
 export const EVENTS = [
     {
+        "title": "Tracklio – Construction Project Intelligence Platform",
+        "subtitle": "Track. Report. Analyze. Know. Lead. Integrate. Optimize.",
+        "category": ["Web Application", "Construction Technology", "Project Management"],
+        "image": "traklio.png",
+        "link": "https://traklio.io",
+        "description": "Tracklio is a modern construction project management and collaboration platform designed for construction companies, contractors, EPC firms, consultants, suppliers, and project owners. It centralizes project tracking, documentation, communication, reporting, and analytics into a single workspace.",
+        "aim": "To simplify construction project execution by providing real-time visibility into tasks, RFIs, submittals, documents, finances, and team collaboration while reducing delays, miscommunication, and project risks.",
+        "challenges": "Building a scalable multi-tenant platform that supports complex construction workflows, role-based permissions, large document management, analytics processing, and collaboration across multiple organizations while maintaining performance and security.",
+        "project_goals": "Create a comprehensive construction operating system that helps teams manage projects from planning to completion, automate reporting, provide actionable insights, improve accountability, and enable data-driven decision making.",
+        "tech_stack": [
+            "Next.js",
+            "TypeScript",
+            "tRPC",
+            "Drizzle ORM",
+            "PostgreSQL",
+            "Go",
+            "Express.js",
+            "Docker",
+            "Tailwind CSS",
+            "Shadcn UI"
+        ],
+        "key_features": [
+            "Multi-workspace and multi-company architecture",
+            "Role-based access control for Owners, Contractors, EPCs, Consultants, Suppliers, and Subcontractors",
+            "Project, task, and milestone management",
+            "RFI and submittal tracking",
+            "Document management and file versioning",
+            "Project observations and issue tracking",
+            "Analytics dashboard and project intelligence",
+            "Team collaboration and activity tracking",
+            "Subscription and workspace management",
+            "Real-time reporting and project insights",
+            "Cloud storage integration for project files",
+            "Public and private project support"
+        ],
+        "lessons_learned": "Construction projects require flexible workflows, strong permission systems, and actionable data insights. Building Tracklio highlighted the importance of combining operational management with analytics to help teams make faster and more informed project decisions."
+    },
+    {
         title: "Maison’s Realone – Premium Food Products",
         subtitle: "Tradition You Can Taste. Purity You Can Trust.",
         category: ["Website", "Food & FMCG"],

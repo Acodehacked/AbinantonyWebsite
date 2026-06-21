@@ -115,3 +115,13 @@ html.lenis body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+@keyframes heroTicker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.hero-ticker {
+  animation: heroTicker 22s linear infinite;
+  display: flex;
+  width: max-content;
+}

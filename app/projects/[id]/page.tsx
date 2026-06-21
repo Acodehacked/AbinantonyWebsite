@@ -13,11 +13,11 @@ export default async function Page({
 
     if (!project) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-white text-black">
+            <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#0b0906" }}>
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold mb-4">Project not found</h1>
-                    <Link href="/" className="text-neutral-500 hover:text-black underline">
-                        Back to Home
+                    <h1 className="font-syne text-4xl font-bold text-white mb-4">Project not found</h1>
+                    <Link href="/" className="font-manrope text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>
+                        ← Back to Home
                     </Link>
                 </div>
             </div>
