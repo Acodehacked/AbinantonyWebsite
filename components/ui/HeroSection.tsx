@@ -180,11 +180,8 @@ export default function HeroSection() {
                             architect
                         </motion.p>
                     </div>
-
-
-
                     {/* Bottom row: description left / name + button right */}
-                    <div className="flex items-end absolute bottom-0 left-0 right-0 z-10 justify-between px-6 pb-8 pt-4 gap-4">
+                    <div className="flex items-end translate-y-[-50px] z-10 justify-between px-6 pb-8 pt-4 gap-4">
                         <motion.p
                             {...fromBelow(introDone, 0.5)}
                             className="font-manrope text-white/60 leading-relaxed"
@@ -213,11 +210,10 @@ export default function HeroSection() {
                             <motion.div {...fromBelow(introDone, 0.55)}>
                                 <Link
                                     href="#contact"
-                                    className="inline-flex items-center font-manrope font-medium text-white text-sm whitespace-nowrap transition-all duration-200 hover:bg-white/10"
+                                    className="inline-flex bg-[#E84018] items-center font-manrope font-medium text-white text-sm whitespace-nowrap transition-all duration-200 hover:bg-white/10"
                                     style={{
                                         padding: "0.6rem 1.25rem",
                                         borderRadius: "9999px",
-                                        backgroundColor: "rgba(8,6,4,0.85)",
                                         border: "1px solid rgba(255,255,255,0.13)",
                                     }}
                                 >
@@ -225,12 +221,12 @@ export default function HeroSection() {
                                 </Link>
                             </motion.div>
                         </div>
-                    </div>
 
+                    </div>
                     {/* Portrait */}
                     <motion.div
                         {...fromBelow(introDone, 0.2)}
-                        className="flex-1 flex scale-120 items-end justify-center overflow-hidden"
+                        className="flex-1 flex scale-120 mt-[-20%] items-end justify-center overflow-hidden"
                     >
                         <Image
                             src="/abinantony-transparent.png"
@@ -242,6 +238,9 @@ export default function HeroSection() {
                             style={{ maxHeight: "70vh", width: "auto" }}
                         />
                     </motion.div>
+
+
+
                 </div>
             </div>
 
@@ -251,7 +250,7 @@ export default function HeroSection() {
                 className="mt-3 overflow-hidden flex items-center"
                 style={{
                     borderRadius: "1rem",
-                    backgroundColor: "#E8590A",
+                    backgroundColor: "#E84018",
                     minHeight: "3rem",
                 }}
             >
