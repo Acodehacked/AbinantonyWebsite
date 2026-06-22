@@ -3,13 +3,81 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Code2, Paintbrush } from "lucide-react";
+import { useMode } from "@/context/ModeContext";
 
 const navLinks = [
-    { label: "Home", href: "/" },
+    { label: "Home",     href: "/" },
     { label: "Projects", href: "/#projects" },
-    { label: "Contact", href: "/#contact" },
+    { label: "Contact",  href: "/#contact" },
 ];
+
+const ORANGE     = "#E84018";
+const TEXT_MUTED = "rgba(242,237,232,0.55)";
+const TEXT_ON    = "#F2EDE8";
+
+function ModeSwitch() {
+    const { mode, setMode } = useMode();
+
+    return (
+        <div
+            className="flex items-center"
+            style={{
+                backgroundColor: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                borderRadius: "9999px",
+                padding: "3px",
+                gap: "2px",
+                marginLeft: "0.5rem",
+            }}
+        >
+            {(["dev", "art"] as const).map((m) => {
+                const isActive = mode === m;
+                return (
+                    <button
+                        key={m}
+                        onClick={() => setMode(m)}
+                        aria-label={m === "dev" ? "Developer mode" : "Art mode"}
+                        title={m === "dev" ? "Dev" : "Art"}
+                        style={{
+                            position: "relative",
+                            borderRadius: "9999px",
+                            padding: "5px 9px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            transition: "color 0.2s",
+                            color: isActive ? "#fff" : TEXT_MUTED,
+                            background: "none",
+                            border: "none",
+                            cursor: "pointer",
+                        }}
+                    >
+                        {isActive && (
+                            <motion.span
+                                layoutId="mode-indicator"
+                                style={{
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: "9999px",
+                                    backgroundColor: ORANGE,
+                                    zIndex: 0,
+                                }}
+                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                            />
+                        )}
+                        <span style={{ position: "relative", zIndex: 1, display: "flex" }}>
+                            {m === "dev"
+                                ? <Code2 size={13} strokeWidth={2.2} />
+                                : <Paintbrush size={13} strokeWidth={2.2} />
+                            }
+                        </span>
+                    </button>
+                );
+            })}
+        </div>
+    );
+}
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +91,7 @@ export default function Navbar() {
         <>
             {/* ── Pill navbar ── */}
             <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
+
                 {/* Desktop pill */}
                 <nav
                     className="hidden md:flex items-center gap-0.5 backdrop-blur-md"
@@ -37,11 +106,12 @@ export default function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="font-manrope font-medium text-neutral-300 hover:text-white transition-colors"
+                            className="font-manrope font-medium transition-colors"
                             style={{
                                 fontSize: "0.875rem",
                                 padding: "0.45rem 1.1rem",
                                 borderRadius: "9999px",
+                                color: TEXT_MUTED,
                             }}
                         >
                             {link.label}
@@ -49,17 +119,19 @@ export default function Navbar() {
                     ))}
                     <Link
                         href="#contact"
-                        className="font-manrope font-semibold text-white transition-all duration-200 hover:brightness-110"
+                        className="font-manrope font-semibold transition-all duration-200 hover:brightness-110"
                         style={{
                             fontSize: "0.875rem",
                             padding: "0.45rem 1.1rem",
                             borderRadius: "9999px",
-                            backgroundColor: "#E8590A",
+                            backgroundColor: ORANGE,
+                            color: "#fff",
                             marginLeft: "0.15rem",
                         }}
                     >
                         Let&apos;s Talk
                     </Link>
+                    <ModeSwitch />
                 </nav>
 
                 {/* Mobile pill */}
@@ -76,32 +148,41 @@ export default function Navbar() {
                 >
                     <Link
                         href="/"
-                        className="font-syne font-bold text-white"
-                        style={{ fontSize: "0.9rem" }}
+                        className="font-syne font-bold"
+                        style={{ fontSize: "0.9rem", color: TEXT_ON }}
                     >
                         Abinantony.
                     </Link>
 
                     <div className="flex items-center gap-1.5">
+                        <ModeSwitch />
                         <Link
                             href="#contact"
-                            className="font-manrope font-semibold text-white"
+                            className="font-manrope font-semibold"
                             style={{
                                 fontSize: "0.8rem",
                                 padding: "0.4rem 0.9rem",
                                 borderRadius: "9999px",
-                                backgroundColor: "#E8590A",
+                                backgroundColor: ORANGE,
+                                color: "#fff",
                             }}
                         >
                             Let&apos;s Talk
                         </Link>
                         <button
                             onClick={() => setIsOpen(true)}
-                            className="text-white p-2"
+                            className="p-2"
                             aria-label="Open menu"
+                            style={{ color: TEXT_ON }}
                         >
-                            <span className="block w-5 h-0.5 bg-white mb-1" />
-                            <span className="block w-5 h-0.5 bg-white" />
+                            <span
+                                className="block w-5 mb-1"
+                                style={{ height: "2px", backgroundColor: TEXT_ON }}
+                            />
+                            <span
+                                className="block w-5"
+                                style={{ height: "2px", backgroundColor: TEXT_ON }}
+                            />
                         </button>
                     </div>
                 </div>
@@ -120,31 +201,30 @@ export default function Navbar() {
                     >
                         <button
                             onClick={() => setIsOpen(false)}
-                            className="absolute top-6 right-6 text-white p-2"
+                            className="absolute top-6 right-6 p-2"
                             aria-label="Close menu"
+                            style={{ color: TEXT_ON }}
                         >
                             <X className="w-7 h-7" />
                         </button>
 
                         <nav className="flex flex-col gap-6">
-                            {[...navLinks, { label: "Let's Talk", href: "#contact" }].map(
-                                (link) => (
-                                    <Link
-                                        key={link.href}
-                                        href={link.href}
-                                        onClick={() => setIsOpen(false)}
-                                        className="font-syne font-bold text-white hover:text-white/60 transition-colors"
-                                        style={{ fontSize: "clamp(2.5rem, 12vw, 4rem)" }}
-                                    >
-                                        {link.label}
-                                    </Link>
-                                )
-                            )}
+                            {[...navLinks, { label: "Let's Talk", href: "#contact" }].map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="font-syne font-bold transition-opacity hover:opacity-60"
+                                    style={{ fontSize: "clamp(2.5rem, 12vw, 4rem)", color: TEXT_ON }}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
                         </nav>
 
                         <p
-                            className="absolute bottom-10 left-8 font-manrope text-white/40"
-                            style={{ fontSize: "0.8rem" }}
+                            className="absolute bottom-10 left-8 font-manrope"
+                            style={{ fontSize: "0.8rem", color: "rgba(242,237,232,0.35)" }}
                         >
                             abina5448@gmail.com
                         </p>

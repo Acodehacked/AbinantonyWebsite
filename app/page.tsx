@@ -7,10 +7,10 @@ import ContactForm from "@/components/ui/ContactForm";
 import TechStack from "@/components/ui/TechStack";
 import ServicesBento from "@/components/ui/ServicesBento";
 import ProjectList from "@/components/ui/ProjectList";
-import VisualShowcase from "@/components/ui/VisualShowcase";
 import HeroSection from "@/components/ui/HeroSection";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { Skiper54 } from "@/components/home/scroller";
+import ModeGate from "@/components/ui/ModeGate";
 
 export default function Home() {
     const caseStudies = EVENTS.slice(0, 5);
@@ -19,6 +19,7 @@ export default function Home() {
         <main className="relative min-h-screen bg-neutral-950 text-neutral-100 selection:bg-white selection:text-black">
             <MouseIndicator />
             <Navbar />
+            <ModeGate>
 
             {/* Hero Section */}
             <HeroSection />
@@ -71,6 +72,7 @@ export default function Home() {
             </SectionWrapper>
 
             <Footer />
+            </ModeGate>
         </main>
     );
 }

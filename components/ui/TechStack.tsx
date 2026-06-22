@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import {
     FaReact, FaVuejs, FaAngular, FaNodeJs, FaPython, FaJava, FaDocker, FaGitAlt, FaAws, FaGoogle, FaFigma, FaLinux
@@ -14,124 +13,132 @@ import {
     SiAdobexd, SiAdobephotoshop, SiAdobeillustrator, SiAdobeaftereffects, SiBlender, SiCanva, SiMui,
     SiTensorflow, SiPytorch, SiOpenai, SiHuggingface, SiLangchain,
     SiKubernetes, SiTerraform, SiAnsible, SiJenkins, SiPrometheus, SiGrafana, SiNginx, SiApache, SiApachekafka, SiRabbitmq, SiRedis,
-    SiAutodesk,
-    SiFramer
+    SiAutodesk, SiFramer
 } from "react-icons/si";
 import { TbBrandCSharp, TbBrandFramerMotion, TbBrandReactNative } from "react-icons/tb";
-import { cn } from "@/lib/utils";
+
+const BG             = "#0b0906";
+const TEXT_PRIMARY   = "#F2EDE8";
+const TEXT_MUTED     = "rgba(242,237,232,0.35)";
+const TEXT_DIM       = "rgba(242,237,232,0.15)";
+const CHIP_BG        = "rgba(255,255,255,0.04)";
+const CHIP_BORDER    = "rgba(255,255,255,0.08)";
+const CHIP_TEXT      = "rgba(242,237,232,0.65)";
+const ORANGE         = "#E84018";
+const ORANGE_GLOW    = "rgba(200,77,10,0.30)";
 
 const categories = [
     {
         id: "frontend",
         label: "Frontend Development.",
         items: [
-            { name: "React", icon: FaReact, color: "text-blue-400" },
-            { name: "Next.js", icon: SiNextdotjs, color: "text-neutral-800" },
-            { name: "Vue.js", icon: FaVuejs, color: "text-green-500" },
-            { name: "Angular", icon: FaAngular, color: "text-red-600" },
-            { name: "Flutter", icon: SiFlutter, color: "text-blue-400" },
-            { name: "React Native", icon: TbBrandReactNative, color: "text-blue-500" },
-            { name: "TailwindCSS", icon: SiTailwindcss, color: "text-cyan-400" },
-            { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-600" },
-            { name: "MUI", icon: SiMui, color: "text-blue-600" },
-            { name: "Chakra UI", icon: SiChakraui, color: "text-teal-500" },
-            { name: "ShadCN", icon: SiNextdotjs, color: "text-neutral-800" },
-            { name: "Three.js", icon: SiThreedotjs, color: "text-neutral-800" },
-            { name: "Framer Motion", icon: TbBrandFramerMotion, color: "text-purple-500" },
+            { name: "React", icon: FaReact },
+            { name: "Next.js", icon: SiNextdotjs },
+            { name: "Vue.js", icon: FaVuejs },
+            { name: "Angular", icon: FaAngular },
+            { name: "Flutter", icon: SiFlutter },
+            { name: "React Native", icon: TbBrandReactNative },
+            { name: "TailwindCSS", icon: SiTailwindcss },
+            { name: "Bootstrap", icon: SiBootstrap },
+            { name: "MUI", icon: SiMui },
+            { name: "Chakra UI", icon: SiChakraui },
+            { name: "ShadCN", icon: SiNextdotjs },
+            { name: "Three.js", icon: SiThreedotjs },
+            { name: "Framer Motion", icon: TbBrandFramerMotion },
         ]
     },
     {
         id: "backend",
         label: "Backend & Databases.",
         items: [
-            { name: "Node.js", icon: FaNodeJs, color: "text-green-600" },
-            { name: "Express.js", icon: SiExpress, color: "text-neutral-800" },
-            { name: "Django", icon: SiDjango, color: "text-green-800" },
-            { name: "FastAPI", icon: SiFastapi, color: "text-teal-600" },
-            { name: "Laravel", icon: SiLaravel, color: "text-red-600" },
-            { name: "Spring", icon: SiSpring, color: "text-green-500" },
-            { name: "GraphQL", icon: SiGraphql, color: "text-pink-600" },
-            { name: "tRPC", icon: SiTrpc, color: "text-blue-500" },
-            { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
-            { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-400" },
-            { name: "MySQL", icon: SiMysql, color: "text-blue-600" },
-            { name: "Firebase", icon: SiFirebase, color: "text-yellow-500" },
-            { name: "Supabase", icon: SiSupabase, color: "text-green-400" },
-            { name: "Redis", icon: SiRedis, color: "text-red-500" },
+            { name: "Node.js", icon: FaNodeJs },
+            { name: "Express.js", icon: SiExpress },
+            { name: "Django", icon: SiDjango },
+            { name: "FastAPI", icon: SiFastapi },
+            { name: "Laravel", icon: SiLaravel },
+            { name: "Spring", icon: SiSpring },
+            { name: "GraphQL", icon: SiGraphql },
+            { name: "tRPC", icon: SiTrpc },
+            { name: "MongoDB", icon: SiMongodb },
+            { name: "PostgreSQL", icon: SiPostgresql },
+            { name: "MySQL", icon: SiMysql },
+            { name: "Firebase", icon: SiFirebase },
+            { name: "Supabase", icon: SiSupabase },
+            { name: "Redis", icon: SiRedis },
         ]
     },
     {
         id: "uiux",
         label: "UI UX Designing.",
         items: [
-            { name: "Figma", icon: FaFigma, color: "text-purple-500" },
-            { name: "Adobe XD", icon: SiAdobexd, color: "text-pink-600" },
-            { name: "Photoshop", icon: SiAdobephotoshop, color: "text-blue-600" },
-            { name: "Illustrator", icon: SiAdobeillustrator, color: "text-orange-600" },
-            { name: "After Effects", icon: SiAdobeaftereffects, color: "text-purple-900" },
-            { name: "Blender", icon: SiBlender, color: "text-orange-500" },
-            { name: "Canva", icon: SiCanva, color: "text-blue-400" },
-            { name: "Autodesk Sketchbook", icon: SiAutodesk, color: "text-orange-800" },
-            { name: "Framer", icon: SiFramer, color: "text-blue-500" },
+            { name: "Figma", icon: FaFigma },
+            { name: "Adobe XD", icon: SiAdobexd },
+            { name: "Photoshop", icon: SiAdobephotoshop },
+            { name: "Illustrator", icon: SiAdobeillustrator },
+            { name: "After Effects", icon: SiAdobeaftereffects },
+            { name: "Blender", icon: SiBlender },
+            { name: "Canva", icon: SiCanva },
+            { name: "Autodesk Sketchbook", icon: SiAutodesk },
+            { name: "Framer", icon: SiFramer },
         ]
     },
     {
         id: "cloud",
         label: "Cloud & DevOps.",
         items: [
-            { name: "AWS", icon: FaAws, color: "text-orange-500" },
-            { name: "Google Cloud", icon: FaGoogle, color: "text-blue-500" },
-            { name: "DigitalOcean", icon: SiDigitalocean, color: "text-blue-600" },
-            { name: "Cloudflare", icon: SiCloudflare, color: "text-orange-400" },
-            { name: "Vercel", icon: SiVercel, color: "text-neutral-800" },
-            { name: "Docker", icon: FaDocker, color: "text-blue-500" },
-            { name: "Git", icon: FaGitAlt, color: "text-red-500" },
-            { name: "GitHub Actions", icon: SiGithubactions, color: "text-blue-600" },
-            { name: "GitLab CI", icon: SiGitlab, color: "text-orange-600" },
-            { name: "Linux", icon: FaLinux, color: "text-neutral-800" },
+            { name: "AWS", icon: FaAws },
+            { name: "Google Cloud", icon: FaGoogle },
+            { name: "DigitalOcean", icon: SiDigitalocean },
+            { name: "Cloudflare", icon: SiCloudflare },
+            { name: "Vercel", icon: SiVercel },
+            { name: "Docker", icon: FaDocker },
+            { name: "Git", icon: FaGitAlt },
+            { name: "GitHub Actions", icon: SiGithubactions },
+            { name: "GitLab CI", icon: SiGitlab },
+            { name: "Linux", icon: FaLinux },
         ]
     },
     {
         id: "architecture",
         label: "Cloud Architecture.",
         items: [
-            { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-600" },
-            { name: "Terraform", icon: SiTerraform, color: "text-purple-600" },
-            { name: "Ansible", icon: SiAnsible, color: "text-neutral-800" },
-            { name: "Jenkins", icon: SiJenkins, color: "text-red-600" },
-            { name: "Prometheus", icon: SiPrometheus, color: "text-orange-600" },
-            { name: "Grafana", icon: SiGrafana, color: "text-orange-500" },
-            { name: "Nginx", icon: SiNginx, color: "text-green-600" },
-            { name: "Apache", icon: SiApache, color: "text-red-500" },
-            { name: "Kafka", icon: SiApachekafka, color: "text-neutral-800" },
-            { name: "RabbitMQ", icon: SiRabbitmq, color: "text-orange-600" },
+            { name: "Kubernetes", icon: SiKubernetes },
+            { name: "Terraform", icon: SiTerraform },
+            { name: "Ansible", icon: SiAnsible },
+            { name: "Jenkins", icon: SiJenkins },
+            { name: "Prometheus", icon: SiPrometheus },
+            { name: "Grafana", icon: SiGrafana },
+            { name: "Nginx", icon: SiNginx },
+            { name: "Apache", icon: SiApache },
+            { name: "Kafka", icon: SiApachekafka },
+            { name: "RabbitMQ", icon: SiRabbitmq },
         ]
     },
     {
         id: "languages",
         label: "Languages.",
         items: [
-            { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-            { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
-            { name: "Python", icon: FaPython, color: "text-blue-400" },
-            { name: "Java", icon: FaJava, color: "text-red-500" },
-            { name: "C++", icon: SiCplusplus, color: "text-blue-600" },
-            { name: "C#", icon: TbBrandCSharp, color: "text-purple-600" },
-            { name: "PHP", icon: SiPhp, color: "text-purple-400" },
-            { name: "Dart", icon: SiDart, color: "text-blue-500" },
-            { name: "Kotlin", icon: SiKotlin, color: "text-purple-500" },
-            { name: "GDScript", icon: SiGodotengine, color: "text-blue-400" },
+            { name: "JavaScript", icon: SiJavascript },
+            { name: "TypeScript", icon: SiTypescript },
+            { name: "Python", icon: FaPython },
+            { name: "Java", icon: FaJava },
+            { name: "C++", icon: SiCplusplus },
+            { name: "C#", icon: TbBrandCSharp },
+            { name: "PHP", icon: SiPhp },
+            { name: "Dart", icon: SiDart },
+            { name: "Kotlin", icon: SiKotlin },
+            { name: "GDScript", icon: SiGodotengine },
         ]
     },
     {
         id: "ai",
         label: "AI & Machine Learning.",
         items: [
-            { name: "TensorFlow", icon: SiTensorflow, color: "text-orange-500" },
-            { name: "PyTorch", icon: SiPytorch, color: "text-red-500" },
-            { name: "OpenAI", icon: SiOpenai, color: "text-neutral-800" },
-            { name: "Hugging Face", icon: SiHuggingface, color: "text-yellow-500" },
-            { name: "LangChain", icon: SiLangchain, color: "text-green-600" },
+            { name: "TensorFlow", icon: SiTensorflow },
+            { name: "PyTorch", icon: SiPytorch },
+            { name: "OpenAI", icon: SiOpenai },
+            { name: "Hugging Face", icon: SiHuggingface },
+            { name: "LangChain", icon: SiLangchain },
         ]
     },
 ];
@@ -151,41 +158,107 @@ export default function TechStack() {
     }, [activeCategory]);
 
     return (
-        <section className="bg-neutral-950 px-6 py-24 md:px-20">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                {/* Left Column: Categories */}
-                <div className="md:col-span-5 space-y-8">
-                    <h2 className="mb-12 text-4xl font-bold text-neutral-600 md:text-6xl">Technologies</h2>
-                    <div className="flex flex-col gap-4">
-                        {categories.map((category) => (
-                            <button
-                                key={category.id}
-                                onMouseEnter={() => setActiveCategory(category.id)}
-                                className={cn(
-                                    "text-left text-2xl md:text-4xl font-bold transition-all duration-300",
-                                    activeCategory === category.id
-                                        ? "text-white translate-x-4"
-                                        : "text-neutral-500 hover:text-neutral-300"
-                                )}
-                            >
-                                {category.label}
-                            </button>
-                        ))}
+        <section
+            className="relative px-6 py-24 md:px-20 overflow-hidden"
+            style={{ backgroundColor: BG }}
+        >
+            {/* Orange ambient glow orb — sits behind the chips panel */}
+            <div
+                aria-hidden="true"
+                style={{
+                    position: "absolute",
+                    right: "-5%",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "55vw",
+                    height: "55vw",
+                    maxWidth: "700px",
+                    maxHeight: "700px",
+                    background: "radial-gradient(circle, rgba(200,77,10,0.13) 0%, transparent 65%)",
+                    pointerEvents: "none",
+                }}
+            />
+
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-12">
+                {/* Left Column */}
+                <div className="md:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <p
+                            className="font-manrope uppercase tracking-widest text-xs mb-10"
+                            style={{ color: TEXT_DIM }}
+                        >
+                            Stack
+                        </p>
+                        <h2
+                            className="mb-12 font-syne font-bold leading-none"
+                            style={{
+                                fontSize: "clamp(3rem, 6vw, 5rem)",
+                                color: TEXT_DIM,
+                                letterSpacing: "-0.03em",
+                            }}
+                        >
+                            Tech&shy;nolo&shy;gies
+                        </h2>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                        {categories.map((category) => {
+                            const isActive = activeCategory === category.id;
+                            return (
+                                <button
+                                    key={category.id}
+                                    onMouseEnter={() => setActiveCategory(category.id)}
+                                    className="text-left font-syne font-bold transition-all duration-300"
+                                    style={{
+                                        fontSize: "clamp(1.1rem, 2.2vw, 1.75rem)",
+                                        color: isActive ? TEXT_PRIMARY : TEXT_MUTED,
+                                        paddingLeft: isActive ? "1rem" : "0",
+                                        borderLeft: `2px solid ${isActive ? ORANGE : "transparent"}`,
+                                        textShadow: isActive ? `0 0 40px ${ORANGE_GLOW}` : "none",
+                                        lineHeight: 1.7,
+                                    }}
+                                >
+                                    {category.label}
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
 
-                {/* Right Column: Tech Chips */}
-                <div className="md:col-span-7 flex items-center">
-                    <div ref={containerRef} className="flex flex-wrap gap-4 content-start">
+                {/* Vertical divider — desktop only */}
+                <div
+                    className="hidden md:block md:col-span-1"
+                    style={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}
+                >
+                    <div
+                        style={{
+                            width: "1px",
+                            background: `linear-gradient(to bottom, transparent, ${ORANGE} 40%, ${ORANGE} 60%, transparent)`,
+                            opacity: 0.35,
+                            margin: "0 auto",
+                        }}
+                    />
+                </div>
+
+                {/* Right Column */}
+                <div className="md:col-span-6 flex items-center">
+                    <div ref={containerRef} className="flex flex-wrap gap-3 content-start">
                         {categories
                             .find((c) => c.id === activeCategory)
                             ?.items.map((item) => (
                                 <div
                                     key={item.name}
-                                    className="group relative flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900 px-6 py-3 transition-all duration-200 hover:scale-105 hover:border-neutral-500 cursor-default"
+                                    className="group flex items-center gap-2 rounded-full px-5 py-2.5 transition-all duration-200 hover:scale-105 cursor-default"
+                                    style={{
+                                        backgroundColor: CHIP_BG,
+                                        border: `1px solid ${CHIP_BORDER}`,
+                                    }}
                                 >
-                                    <item.icon className={cn("w-6 h-6 transition-colors", item.color)} />
-                                    <span className="text-lg font-medium text-neutral-300 transition-colors group-hover:text-white">
+                                    <item.icon className="w-4 h-4" style={{ color: TEXT_MUTED }} />
+                                    <span
+                                        className="text-sm font-medium font-manrope"
+                                        style={{ color: CHIP_TEXT }}
+                                    >
                                         {item.name}
                                     </span>
                                 </div>

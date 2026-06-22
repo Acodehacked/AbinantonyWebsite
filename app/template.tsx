@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { usePathname } from "next/navigation";
+import { useIntro } from "@/context/IntroContext";
 
 /* ── Indian languages only, English as the final hold ── */
 const NAMES = [
@@ -31,10 +32,11 @@ const STAGGER  = 0.06; // seconds between each column
 const DURATION = 0.52; // seconds each column takes
 
 export default function Template({ children }: { children: React.ReactNode }) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const nameRef      = useRef<HTMLSpanElement>(null);
-    const dotRef       = useRef<HTMLDivElement>(null);
-    const pathname     = usePathname();
+    const containerRef  = useRef<HTMLDivElement>(null);
+    const nameRef       = useRef<HTMLSpanElement>(null);
+    const dotRef        = useRef<HTMLDivElement>(null);
+    const pathname      = usePathname();
+    const { setIntroDone } = useIntro();
 
     useEffect(() => {
         const container = containerRef.current;
@@ -76,7 +78,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         /* ── staircase exit: columns split top-up / bottom-down with delay ── */
         function triggerExit() {
             const tl = gsap.timeline({
-                onComplete: () => { gsap.set(container, { display: "none" }); },
+                onComplete: () => { gsap.set(container, { display: "none" }); setIntroDone(); },
             });
 
             /* fade name & dot before panels move */

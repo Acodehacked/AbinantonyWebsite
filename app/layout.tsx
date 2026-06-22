@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Syne, Manrope } from "next/font/google";
 import "@/app/globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
+import { IntroProvider } from "@/context/IntroContext";
+import { ModeProvider } from "@/context/ModeContext";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -84,7 +86,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className={`${syne.variable} ${manrope.variable} font-sans bg-background text-foreground antialiased selection:bg-white selection:text-black`}>
-        <SmoothScroll>{children}</SmoothScroll>
+        <ModeProvider>
+          <IntroProvider>
+            <SmoothScroll>{children}</SmoothScroll>
+          </IntroProvider>
+        </ModeProvider>
       </body>
     </html>
   );
