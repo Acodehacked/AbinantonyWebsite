@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // motion used by mobile menu
 import { X, Code2, Paintbrush } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useMode } from "@/context/ModeContext";
 
 const navLinks = [
@@ -32,7 +33,7 @@ function ModeSwitch() {
             }}
         >
             {(["dev", "art"] as const).map((m) => {
-                const isActive = mode === m;
+                const active = mode === m;
                 return (
                     <button
                         key={m}
@@ -40,38 +41,22 @@ function ModeSwitch() {
                         aria-label={m === "dev" ? "Developer mode" : "Art mode"}
                         title={m === "dev" ? "Dev" : "Art"}
                         style={{
-                            position: "relative",
                             borderRadius: "9999px",
                             padding: "5px 9px",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            transition: "color 0.2s",
-                            color: isActive ? "#fff" : TEXT_MUTED,
-                            background: "none",
+                            backgroundColor: active ? ORANGE : "transparent",
+                            color: active ? "#fff" : TEXT_MUTED,
                             border: "none",
                             cursor: "pointer",
+                            transition: "background-color 0.2s, color 0.2s",
                         }}
                     >
-                        {isActive && (
-                            <motion.span
-                                layoutId="mode-indicator"
-                                style={{
-                                    position: "absolute",
-                                    inset: 0,
-                                    borderRadius: "9999px",
-                                    backgroundColor: ORANGE,
-                                    zIndex: 0,
-                                }}
-                                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                            />
-                        )}
-                        <span style={{ position: "relative", zIndex: 1, display: "flex" }}>
-                            {m === "dev"
-                                ? <Code2 size={13} strokeWidth={2.2} />
-                                : <Paintbrush size={13} strokeWidth={2.2} />
-                            }
-                        </span>
+                        {m === "dev"
+                            ? <Code2 size={13} strokeWidth={2.2} />
+                            : <Paintbrush size={13} strokeWidth={2.2} />
+                        }
                     </button>
                 );
             })}
@@ -81,6 +66,10 @@ function ModeSwitch() {
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
+
+    const isActive = (href: string) =>
+        href === "/" ? pathname === "/" : pathname.startsWith(href.replace("/#", "/"));
 
     useEffect(() => {
         document.body.style.overflow = isOpen ? "hidden" : "unset";
@@ -102,21 +91,25 @@ export default function Navbar() {
                         padding: "0.35rem 0.4rem",
                     }}
                 >
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            className="font-manrope font-medium transition-colors"
-                            style={{
-                                fontSize: "0.875rem",
-                                padding: "0.45rem 1.1rem",
-                                borderRadius: "9999px",
-                                color: TEXT_MUTED,
-                            }}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
+                    {navLinks.map((link) => {
+                        const active = isActive(link.href);
+                        return (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="font-manrope font-medium transition-all duration-200"
+                                style={{
+                                    fontSize: "0.875rem",
+                                    padding: "0.45rem 1.1rem",
+                                    borderRadius: "9999px",
+                                    color: active ? "#fff" : TEXT_MUTED,
+                                    backgroundColor: active ? ORANGE : "transparent",
+                                }}
+                            >
+                                {link.label}
+                            </Link>
+                        );
+                    })}
                     <Link
                         href="#contact"
                         className="font-manrope font-semibold transition-all duration-200 hover:brightness-110"
