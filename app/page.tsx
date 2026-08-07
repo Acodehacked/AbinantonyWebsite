@@ -13,7 +13,7 @@ import { Skiper54 } from "@/components/home/scroller";
 import ModeGate from "@/components/ui/ModeGate";
 
 export default function Home() {
-    const caseStudies = EVENTS.slice(0, 5);
+    const caseStudies = EVENTS;
 
     return (
         <main className="relative min-h-screen bg-neutral-950 text-neutral-100 selection:bg-white selection:text-black">

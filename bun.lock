@@ -9,6 +9,7 @@
         "@react-spring/web": "^9.7.5",
         "@studio-freight/lenis": "^1.0.42",
         "@tabler/icons-react": "^3.31.0",
+        "@vercel/analytics": "^2.0.1",
         "axios": "^1.6.8",
         "bcrypt": "^5.1.1",
         "bootstrap": "^5.3.3",
@@ -222,6 +223,8 @@
     "@typescript-eslint/visitor-keys": ["@typescript-eslint/visitor-keys@6.20.0", "", { "dependencies": { "@typescript-eslint/types": "6.20.0", "eslint-visitor-keys": "^3.4.1" } }, "sha512-E8Cp98kRe4gKHjJD4NExXKz/zOJ1A2hhZc+IMVD6i7w4yjIvh6VyuRI0gRtxAsXtoC35uGMaQ9rjI2zJaXDEAw=="],
 
     "@ungap/structured-clone": ["@ungap/structured-clone@1.2.0", "", {}, "sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ=="],
+
+    "@vercel/analytics": ["@vercel/analytics@2.0.1", "", { "peerDependencies": { "@remix-run/react": "^2", "@sveltejs/kit": "^1 || ^2", "next": ">= 13", "nuxt": ">= 3", "react": "^18 || ^19 || ^19.0.0-rc", "svelte": ">= 4", "vue": "^3", "vue-router": "^4" }, "optionalPeers": ["@remix-run/react", "@sveltejs/kit", "next", "nuxt", "react", "svelte", "vue", "vue-router"] }, "sha512-MTQG6V9qQrt1tsDeF+2Uoo5aPjqbVPys1xvnIftXSJYG2SrwXRHnqEvVoYID7BTruDz4lCd2Z7rM1BdkUehk2g=="],
 
     "@webcomponents/webcomponentsjs": ["@webcomponents/webcomponentsjs@2.8.0", "", {}, "sha512-loGD63sacRzOzSJgQnB9ZAhaQGkN7wl2Zuw7tsphI5Isa0irijrRo6EnJii/GgjGefIFO8AIO7UivzRhFaEk9w=="],
 

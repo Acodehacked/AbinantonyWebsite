@@ -21,6 +21,7 @@ interface ProjectProps {
         tech_stack: string[];
         key_features: string[];
         link?: string;
+        extraimage?: string;
         lessons_learned: string;
     } | null
 }
@@ -177,7 +178,7 @@ const Projects = ({ project }: ProjectProps) => {
                 >
                     <div className="rounded-2xl overflow-hidden shadow-2xl shadow-neutral-900/10 border border-neutral-200">
                         <Image
-                            src={`/${project?.image ?? ''}`}
+                            src={`/${project?.extraimage ?? project?.image ?? ''}`}
                             alt={project?.title ?? ''}
                             width={1400}
                             height={800}

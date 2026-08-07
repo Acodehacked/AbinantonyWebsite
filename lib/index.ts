@@ -2,6 +2,88 @@
 
 export const EVENTS = [
     {
+        "title": "IEDC Student Innovation Portal",
+        "subtitle": "Empowering Students to Build, Innovate, and Lead.",
+        "category": [
+            "UI/UX Design",
+            "Web Application",
+            "Student Engagement Platform"
+        ],
+        "image": "f-12.png",
+        "extraimage":"/c/iedc-figma.png",
+        "link": "https://iedc-sjcet.vercel.app/",
+        "description": "The IEDC Student Innovation Portal is a modern digital ecosystem designed to centralize innovation activities within a college campus. It enables students to discover events, register for workshops and hackathons, manage their innovation portfolio, track participation, earn achievement points, access digital certificates, and build a professional profile that reflects their entrepreneurial journey.",
+        "aim": "To create a unified digital experience that encourages students to actively participate in innovation programs by making events, projects, achievements, and certifications easily accessible while fostering a culture of creativity, collaboration, and entrepreneurship.",
+        "challenges": "Designing an engaging platform that appeals to students while balancing usability, accessibility, and scalability. The challenge was to transform a traditional event management system into an interactive ecosystem that motivates continuous participation through intuitive navigation, gamification, personalized dashboards, QR-based attendance, and modern visual storytelling.",
+        "project_goals": "Design a visually compelling, user-centered platform that streamlines student engagement across workshops, hackathons, projects, certifications, and leaderboards. The portal aims to improve event participation, simplify attendance management, showcase student achievements, and create a digital innovation portfolio that students can use throughout their academic journey.",
+        "tech_stack": [
+            "Figma",
+            "UI/UX Design",
+            "Design System",
+            "Wireframing",
+            "Prototyping",
+            "Responsive Design",
+            "Next.js",
+            "Tailwind CSS",
+            "Shadcn UI",
+            "Framer Motion"
+        ],
+        "key_features": [
+            "Modern responsive landing page",
+            "Personalized student dashboard",
+            "Interactive innovation portfolio",
+            "QR code-based attendance system",
+            "Workshop, hackathon, and event registration",
+            "Real-time participation points tracking",
+            "Digital certificate management",
+            "Innovation leaderboard and rankings",
+            "Achievement badges and gamification",
+            "Project showcase and collaboration",
+            "Student profile with innovation timeline",
+            "Role-based portal for students and administrators",
+            "Upcoming events and announcements",
+            "Portfolio-ready achievement records",
+            "Mobile-first responsive experience"
+        ],
+        "design_highlights": [
+            "Clean editorial typography with bold visual hierarchy",
+            "Warm premium color palette inspired by innovation and creativity",
+            "Glassmorphism cards with soft shadows",
+            "Micro-interactions and smooth page transitions",
+            "Animated statistics and interactive dashboards",
+            "Bento grid feature sections",
+            "Gamified user experience with badges and progress tracking",
+            "Minimal yet expressive interface focused on student engagement",
+            "Apple and Linear-inspired modern design language",
+            "Accessibility-first responsive layouts"
+        ],
+        "target_users": [
+            "Students",
+            "Innovation & Entrepreneurship Development Cell (IEDC)",
+            "Faculty Coordinators",
+            "Campus Administrators",
+            "Mentors"
+        ],
+        "user_flow": [
+            "Discover Events",
+            "Register for Workshops or Hackathons",
+            "Attend Using Secure QR",
+            "Earn Innovation Points",
+            "Receive Verified Certificates",
+            "Track Progress on Dashboard",
+            "Build Innovation Portfolio",
+            "Climb the Leaderboard"
+        ],
+        "outcomes": [
+            "Increased student engagement through an intuitive digital experience",
+            "Simplified event registration and attendance verification",
+            "Centralized innovation activities into a single platform",
+            "Encouraged participation using gamification and achievement tracking",
+            "Created a professional portfolio showcasing student innovation"
+        ],
+        "lessons_learned": "Designing the IEDC Portal reinforced that successful student platforms must go beyond functionality. A compelling visual identity, intuitive navigation, meaningful gamification, and personalized experiences significantly increase engagement. Focusing on user motivation and community-building transforms a simple portal into a platform students genuinely enjoy using."
+    },
+    {
         "title": "Tracklio – Construction Project Intelligence Platform",
         "subtitle": "Track. Report. Analyze. Know. Lead. Integrate. Optimize.",
         "category": ["Web Application", "Construction Technology", "Project Management"],
@@ -226,34 +308,6 @@ export const EVENTS = [
         tech_stack: ["Godot Engine", "GDScript", "Firebase"],
         key_features: ["Multiplayer gameplay", "Leaderboards", "Smooth animations"],
         lessons_learned: "The complexities of real-time multiplayer synchronization."
-    },
-    {
-        title: "Hardhat Cloud Tech Dashboard",
-        link: 'https://hardhatcloudtech.com',
-        subtitle: "A Comprehensive Admin Panel for Cloud Services",
-        category: ["Web Application", "Cloud Computing"],
-        image: 'm6.png',
-        description: "Built an advanced dashboard for Hardhat Cloud Tech.",
-        aim: "To provide an intuitive and powerful admin interface for managing cloud services.",
-        challenges: "Ensuring real-time data updates and seamless user interactions.",
-        project_goals: "Develop an efficient and feature-rich admin panel.",
-        tech_stack: ["Next.js", "Cloudflare", "Razorpay", "NextAuth"],
-        key_features: ["Real-time service management", "Payment integration", "Secure authentication"],
-        lessons_learned: "The need for optimizing admin interfaces for better workflow management."
-    },
-    {
-        title: "ShowMyAds Dashboard",
-        link: 'https://show.manolo.in',
-        subtitle: "An Interactive Advertising Management Platform",
-        category: ["Web Application", "Data Visualization"],
-        image: 'm7.png',
-        description: "Developed a dashboard for ShowMyAds with JS Charts, ShadCN components, and Framer Motion animations.",
-        aim: "To provide a comprehensive platform for managing and analyzing advertising campaigns.",
-        challenges: "Integrating real-time analytics and ensuring high performance while maintaining a smooth UI.",
-        project_goals: "Develop a user-friendly dashboard with rich visualization and easy ad management capabilities.",
-        tech_stack: ["Next.js", "JS Charts", "ShadCN", "Framer Motion"],
-        key_features: ["Real-time ad analytics", "Interactive UI", "Data visualization tools"],
-        lessons_learned: "Optimizing large-scale data visualization for better user experience."
     },
     {
         title: "Porukara College Official Website",
