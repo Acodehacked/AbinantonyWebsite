@@ -96,12 +96,12 @@ const Projects = ({ project }: ProjectProps) => {
             {/* Hero */}
             <section className="relative min-h-[90vh] bg-neutral-900 overflow-hidden">
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 aspect-video">
                     <Image
                         src={`/${project?.image ?? ''}`}
                         alt={project?.title ?? ''}
                         fill
-                        className="object-cover opacity-30"
+                        className="object-cover opacity-30 aspect-video object-top"
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-neutral-900/50 via-neutral-900/80 to-neutral-900" />

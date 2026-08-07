@@ -9,8 +9,8 @@ export const EVENTS = [
             "Web Application",
             "Student Engagement Platform"
         ],
-        "image": "f-12.png",
-        "extraimage":"/c/iedc-figma.png",
+        "image": "c/f-12.png",
+        "extraimage":"c/iedc-figma.png",
         "link": "https://iedc-sjcet.vercel.app/",
         "description": "The IEDC Student Innovation Portal is a modern digital ecosystem designed to centralize innovation activities within a college campus. It enables students to discover events, register for workshops and hackathons, manage their innovation portfolio, track participation, earn achievement points, access digital certificates, and build a professional profile that reflects their entrepreneurial journey.",
         "aim": "To create a unified digital experience that encourages students to actively participate in innovation programs by making events, projects, achievements, and certifications easily accessible while fostering a culture of creativity, collaboration, and entrepreneurship.",
